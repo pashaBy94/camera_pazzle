@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuzzleCam Game</title>
+    <script src="scripts/index.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body onload="main()">
+    <div class="contains">
+        <canvas id="myCanvas"></canvas>
+        <div class="menuItems">
+            <div class="menu">
+                <div class="controls">
+                    Выбрать сложность:
+                    <select name="" id="difficult" onchange="setDifficult()">
+                        <option value="easy">Легкий</option>
+                        <option value="medium">Средний</option>
+                        <option value="hard">Тяжелый</option>
+                        <option value="insane">Очень тяжелый</option>
+                    </select>
+                    <button onclick="restart()">Обновить поле</button>
+                </div>
+                <div class="time"></div>
+                <!-- <script>
+                    class TimeFormatted extends HTMLElement {
+                        constructor(){
+                            this.currentTime = new Date();
+                        }
+                      render() { // (1)
+                        let date = new Date(this.getAttribute('datetime') || Date.now());
+                        this.innerHTML = new Intl.DateTimeFormat("default", {
+                          hour: this.currentTime.getHours() - this.getAttribute('hour') || undefined,
+                          minute: this.getAttribute('minute') || undefined,
+                          second: this.getAttribute('second') || undefined,
+                        }).format(date);
+                      }
+                    
+                      connectedCallback() { // (2)
+                        if (!this.rendered) {
+                          this.render();
+                          this.rendered = true;
+                        }
+                      }
+                    
+                      static get observedAttributes() { // (3)
+                        return ['datetime', 'hour', 'minute', 'second'];
+                      }
+                    
+                      attributeChangedCallback(name, oldValue, newValue) { // (4)
+                        this.render();
+                      }
+                    
+                    }
+                    customElements.define("time-formatted", TimeFormatted);
+                    </script> -->
+                  
+                  <!-- <time-formatted id="elem" hour="numeric" minute="numeric" second="numeric"></time-formatted>
+
+                  <script>
+                  setInterval(() => elem.setAttribute('datetime', new Date()), 1000); // (5)
+                  </script> -->
+                              </div>
+        </div>
+    </div>
+</body>
+</html>
