@@ -10,5 +10,19 @@ body{
 }
 .menuItems{
     position: fixed;
-    bottom: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(156, 84, 224);
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+.menu{
+    border-radius: 20px;
+    padding: 20px;
+    border: 4px solid rgb(82, 216, 82);
+
 }

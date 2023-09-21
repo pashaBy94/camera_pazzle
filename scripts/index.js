@@ -11,11 +11,12 @@ let START_TIME = null;
 let END_TIME = null;
 let CORRECT_PIEZES = new Set();
 let IMAG = new Image();
-IMAG.src = "img/belosnegka.png";
+// IMAG.src = "img/belosnegka.png";
 
 
 
 function main() {
+    IMAG.src = "img/belosnegka.png";
     CANVAS = document.getElementById('myCanvas');
     CONTEXT = CANVAS.getContext('2d');
     addEventListener();
@@ -29,7 +30,7 @@ function main() {
                 handleResize();
                 window.addEventListener('resize', handleResize);
                 initialPieze();
-                randomizePiezes();
+                // randomizePiezes();
                 updateCanvas();
             }
     }).catch(err => alert('camera error:' + err))
@@ -40,25 +41,21 @@ function setDifficult() {
         case 'easy': {
             SIZE.rows = 3;
             SIZE.columns = 3;
-            // initialPieze(3,3);
             break;
         };
         case 'medium': {
             SIZE.rows = 5;
             SIZE.columns = 5;
-            // initialPieze(5,5);
             break;
         }
         case 'hard': {
             SIZE.rows = 10;
             SIZE.columns = 10;
-            // initialPieze(10,10);
             break;
         }
         case 'insane': {
             SIZE.rows = 12;
             SIZE.columns = 16;
-            // initialPieze(16, 24);
             break;
         }
     }
@@ -176,16 +173,12 @@ function updateCanvas() {
     CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
     CONTEXT.globalAlpha = 0.5;
     CONTEXT.drawImage(VIDEO, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
-    // imag.addEventListener('load',()=>{
-    //     console.log(11);
-    // },false)
-    // imag.src = "img/belosnegka.png";
     CONTEXT.drawImage(IMAG, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
     CONTEXT.globalAlpha = 1;
     for (let i = 0; i < PIEZES.length; i++) {
         PIEZES[i].draw(CONTEXT);
     }
-    requestAnimationFrame(updateCanvas)
+    // requestAnimationFrame(updateCanvas)
 }
 
 function handleResize() {
