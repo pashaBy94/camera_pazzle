@@ -4,14 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PuzzleCam Game</title>
+    <script src="scripts/initial.js"></script>
     <script src="scripts/index.js"></script>
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body onload="main()">
     <div class="contains">
         <canvas id="myCanvas"></canvas>
-        <div class="menuItems">
-          <div class="rezim_game">
+        <div class="start_menu">
+          <div class="menu_container">
+          <div class="start_header">
+            <h1 class="start_title">
+            Выбери сценарий
+            </h1>
+              <div class="start_settings-button" onclick="openStartMenu()">
+                <div class="imag_setting">
+                  <img class="img_setting" src="img/setting.svg" />
+                </div> 
+              </div>
+          </div>
+          <div class="choise_background">
+            <ul class="game_list">
+              <li class="game_item">
+                <div class="choise_item">
+                  <!-- <img class="choise_item-img" src="img/belosnegka.png"> -->
+                  <h2 class="choise_item-name">Видео пазл</h2>
+                </div>
+              </li>
+              <li class="game_item">
+                <div class="choise_item">
+                  <!-- <img class="choise_item-img" src="img/belosnegka.png"> -->
+                  <h2 class="choise_item-name">Фото пазл</h2>
+                </div>
+              </li>
+              <li class="game_item">
+                <div class="choise_item">
+                  <!-- <img class="choise_item-img" src="img/belosnegka.png"> -->
+                  <h2 class="choise_item-name">Картинка</h2>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+ 
+        <!-- <div class="menuItems">
+          <div class="choise_background">
             <ul class="game_list">
               <li class="game_item"></li>
               <li class="game_item"></li>
@@ -37,46 +74,9 @@
                     <button onclick="restart()">Обновить поле</button>
                 </div>
                 <div class="time"></div>
-                <!-- <script>
-                    class TimeFormatted extends HTMLElement {
-                        constructor(){
-                            this.currentTime = new Date();
-                        }
-                      render() { // (1)
-                        let date = new Date(this.getAttribute('datetime') || Date.now());
-                        this.innerHTML = new Intl.DateTimeFormat("default", {
-                          hour: this.currentTime.getHours() - this.getAttribute('hour') || undefined,
-                          minute: this.getAttribute('minute') || undefined,
-                          second: this.getAttribute('second') || undefined,
-                        }).format(date);
-                      }
-                    
-                      connectedCallback() { // (2)
-                        if (!this.rendered) {
-                          this.render();
-                          this.rendered = true;
-                        }
-                      }
-                    
-                      static get observedAttributes() { // (3)
-                        return ['datetime', 'hour', 'minute', 'second'];
-                      }
-                    
-                      attributeChangedCallback(name, oldValue, newValue) { // (4)
-                        this.render();
-                      }
-                    
-                    }
-                    customElements.define("time-formatted", TimeFormatted);
-                    </script> -->
-                  
-                  <!-- <time-formatted id="elem" hour="numeric" minute="numeric" second="numeric"></time-formatted>
-
-                  <script>
-                  setInterval(() => elem.setAttribute('datetime', new Date()), 1000); // (5)
-                  </script> -->
                               </div>
-        </div>
+        </div> -->
+      </div>
     </div>
 </body>
 </html>

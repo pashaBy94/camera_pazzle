@@ -11,12 +11,20 @@ let START_TIME = null;
 let END_TIME = null;
 let CORRECT_PIEZES = new Set();
 let IMAG = new Image();
-// IMAG.src = "img/belosnegka.png";
+let BELL_AUDIO = new Audio('/sound/bell.mp3');
+let PAZZLE_AUDIO = new Audio('/sound/pazzle.mp3');
+console.log(BELL_AUDIO);
+//   audio.src = 'click.mp3'; // Указываем путь к звуку "клика"
+//   audio.autoplay = true; // Автоматически запускаем
 
-
-
+function choisiImag(str){
+    IMAG.src = str;
+}
+function playSound(audio){
+    audio.play();
+}
 function main() {
-    IMAG.src = "img/belosnegka.png";
+    choisiImag("img/belosnegka.png");
     CANVAS = document.getElementById('myCanvas');
     CONTEXT = CANVAS.getContext('2d');
     addEventListener();
@@ -30,7 +38,7 @@ function main() {
                 handleResize();
                 window.addEventListener('resize', handleResize);
                 initialPieze();
-                // randomizePiezes();
+                randomizePiezes();
                 updateCanvas();
             }
     }).catch(err => alert('camera error:' + err))
@@ -178,7 +186,7 @@ function updateCanvas() {
     for (let i = 0; i < PIEZES.length; i++) {
         PIEZES[i].draw(CONTEXT);
     }
-    // requestAnimationFrame(updateCanvas)
+    requestAnimationFrame(updateCanvas)
 }
 
 function handleResize() {
@@ -492,6 +500,7 @@ class Piece {
         this.x = this.correctCoord.x;
         this.y = this.correctCoord.y;
         this.correct = true;
-        CORRECT_PIEZES.add(`${this.x}, ${this.y}`)
+        playSound(BELL_AUDIO);
+        CORRECT_PIEZES.add(`${this.x}, ${this.y}`);
     }
 }
