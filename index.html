@@ -1,53 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PuzzleCam Game</title>
-    <script src="scripts/initial.js"></script>
-    <script src="scripts/index.js"></script>
-    <link rel="stylesheet" href="styles/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PuzzleCam Game</title>
+  <script src="scripts/initial.js"></script>
+  <script src="scripts/index.js"></script>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
+
 <body onload="main()">
-    <div class="contains">
-        <canvas id="myCanvas"></canvas>
-        <div class="start_menu">
-          <div class="menu_container">
-          <div class="start_header">
-            <h1 class="start_title">
+  <div class="contains">
+    <canvas id="myCanvas"></canvas>
+    <div class="start_menu">
+      <div class="menu_container">
+        <div class="start_header">
+          <h1 class="start_title">
             Выбери сценарий
-            </h1>
-              <div class="start_settings-button" onclick="openStartMenu()">
-                <div class="imag_setting">
-                  <img class="img_setting" src="img/setting.svg" />
-                </div> 
-              </div>
-          </div>
-          <div class="choise_background">
-            <ul class="game_list">
-              <li class="game_item">
-                <div class="choise_item">
-                  <!-- <img class="choise_item-img" src="img/belosnegka.png"> -->
-                  <h2 class="choise_item-name">Видео пазл</h2>
-                </div>
-              </li>
-              <li class="game_item">
-                <div class="choise_item">
-                  <!-- <img class="choise_item-img" src="img/belosnegka.png"> -->
-                  <h2 class="choise_item-name">Фото пазл</h2>
-                </div>
-              </li>
-              <li class="game_item">
-                <div class="choise_item">
-                  <!-- <img class="choise_item-img" src="img/belosnegka.png"> -->
-                  <h2 class="choise_item-name">Картинка</h2>
-                </div>
-              </li>
-            </ul>
+          </h1>
+          <div class="start_settings-button" onclick="openStartMenu()">
+            <div class="imag_setting">
+              <img class="img_setting" src="img/setting.svg" />
+            </div>
           </div>
         </div>
- 
-        <!-- <div class="menuItems">
+        <div class="choise_background">
+          <ul class="game_list">
+            <li class="game_item">
+              <div class="choise_item">
+                <h2 class="choise_item-name">Видео пазл</h2>
+              </div>
+            </li>
+            <li class="game_item">
+              <div class="choise_item">
+                <h2 class="choise_item-name">Фото пазл</h2>
+              </div>
+            </li>
+            <li class="game_item">
+              <div class="choise_item">
+                <h2 class="choise_item-name">Картинка</h2>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- <div class="menuItems">
           <div class="choise_background">
             <ul class="game_list">
               <li class="game_item"></li>
@@ -76,7 +75,8 @@
                 <div class="time"></div>
                               </div>
         </div> -->
-      </div>
     </div>
+  </div>
 </body>
+
 </html>

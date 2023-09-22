@@ -1,36 +1,54 @@
-*{
+* {
     box-sizing: border-box;
 }
-li, ul{
+
+li,
+ul {
     list-style-type: none;
 }
-h1,h2,h3,h4,h5,ul,li{
+
+h1,
+h2,
+h3,
+h4,
+h5,
+ul,
+li {
     margin: 0;
     padding: 0;
 }
-button{
+
+button {
     background-color: transparent;
     border: none;
     padding-left: 0;
     margin: 0;
 }
-body, button, a {
+
+body,
+button,
+a {
     color: white;
     font-family: 'Arial';
 
 }
-body{
+html{
+    font-size: 7px;
+}
+body {
     margin: 0;
     padding: 0;
     overflow: hidden;
     overscroll-behavior: none;
 }
-.contains{
+
+.contains {
     width: 100%;
     height: 100%;
     /* background-color: rgb(156, 84, 224); */
 }
-.start_menu{
+
+.start_menu {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -41,78 +59,102 @@ body{
     height: 100%;
     background-color: rgb(156, 84, 224);
 }
-.menu_container{
+
+.menu_container {
     width: 90%;
     height: 90%;
-    border-radius: 20px;
-    padding: 25px;
+    border-radius: 1.2rem;
+    padding: 1.6rem;
     background-color: rgb(255, 255, 255);
 }
-.start_header{
+
+.start_header {
     position: relative;
     display: flex;
-    gap: 10px;
-    top: -50px;
-    font-size: 1.5em;
+    gap: .8rem;
+    top: -3.2rem;
+    font-size: 1.5rem;
     justify-content: space-between;
     align-items: center;
 }
-.start_title{
+
+.start_title {
     background-color: rgb(84, 77, 179);
-    padding: 10px 30px;
-    border-radius: 20px;
-    box-shadow:  0 10px 5px 0 rgb(32, 30, 68);
-    height: 90px;
+    padding: .6rem 3rem;
+    border-radius: 1rem;
+    box-shadow: 0 .6rem .3rem 0 rgb(32, 30, 68);
+    height: 5.5rem;
     width: 70%;
     display: flex;
     align-items: center;
 }
-.start_settings-button{
-    height: 90px;
-    width: 90px;
-    padding: 12px;
-    border-radius: 15px;
+
+.start_settings-button {
+    height: 5.5rem;
+    width: 5.5rem;
+    padding: .7rem;
+    border-radius: 1rem;
     background-color: rgb(147, 144, 189);
     background: linear-gradient(rgb(124, 121, 163), rgb(86, 80, 170));
-    box-shadow:  0 10px 5px 0 rgb(32, 30, 68);
+    box-shadow: 0 .6rem .3rem 0 rgb(32, 30, 68);
 }
-.imag_setting{
+
+.imag_setting {
     font-size: 0;
     border: 1px solid gray;
-    border-radius: 15px;
-    padding: 8px;
-    box-shadow: inset 0 0 10px 1px rgb(32, 30, 68);
+    border-radius: 1rem;
+    padding: .4rem;
+    box-shadow: inset 0 0 .6rem 1px rgb(32, 30, 68);
 }
-.img_setting{
+
+.img_setting {
     width: 100%;
     height: 100%;
 }
-.choise_background{
-    border-radius: 20px;
-    border: 1px solid green;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
+
+.choise_background {
+    position: relative;
+    top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 
 }
-.game_list{
-    /* display: inline-block; */
-    
+
+.game_list {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+
 }
 
-.game_item{
-    /* display: inline-block; */
-    width: 200px;
-    height: 250px;
+.game_item {
+    display: block;
+    position: relative;
+    width: 20em;
+    height: 18em;
+    border-radius: 1.2rem;
     background-image: url('/img/belosnegka.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
-.choise_item-img{
+
+.choise_item {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    height: 100%;
+    border-bottom-left-radius: 1.2rem;
+    border-bottom-right-radius: 1.2rem;
+    height: 2.6rem;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
