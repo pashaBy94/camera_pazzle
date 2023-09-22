@@ -33,7 +33,7 @@ a {
 
 }
 html{
-    font-size: 7px;
+    font-size: 16px;
 }
 body {
     margin: 0;
@@ -68,7 +68,7 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
-.start_header {
+.start_header, .setting_header {
     position: relative;
     display: flex;
     gap: .8rem;
@@ -78,7 +78,7 @@ body {
     align-items: center;
 }
 
-.start_title {
+.start_title, .setting_title {
     background-color: rgb(84, 77, 179);
     padding: .6rem 3rem;
     border-radius: 1rem;
@@ -89,17 +89,16 @@ body {
     align-items: center;
 }
 
-.start_settings-button {
+.start_settings-button, .setting_button-close {
     height: 5.5rem;
     width: 5.5rem;
     padding: .7rem;
     border-radius: 1rem;
-    background-color: rgb(147, 144, 189);
     background: linear-gradient(rgb(124, 121, 163), rgb(86, 80, 170));
     box-shadow: 0 .6rem .3rem 0 rgb(32, 30, 68);
 }
 
-.imag_setting {
+.imag_setting{
     font-size: 0;
     border: 1px solid gray;
     border-radius: 1rem;
@@ -107,7 +106,7 @@ body {
     box-shadow: inset 0 0 .6rem 1px rgb(32, 30, 68);
 }
 
-.img_setting {
+.img_setting, .img_close {
     width: 100%;
     height: 100%;
 }
@@ -156,6 +155,48 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.modal_settings{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.modal_settings-background{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: black;
+    opacity: 0.5;
+    z-index: 1;
+}
+.modal_settings-content{
+    width: 80%;
+    height: 80%;
+    background-color: white;
+    z-index: 10;
+    border-radius: 1.2rem;
+    padding: 1.6rem;
+}
+
+.setting_button-close {
+
+    background: linear-gradient(rgb(162, 121, 163), rgb(192, 74, 192));
+    box-shadow: 0 .6rem .3rem 0 rgb(57, 30, 68);
+}
+
+.imag_close {
+    font-size: 0;
+    padding: .4rem;
+}
+
 
 
 
