@@ -1,3 +1,24 @@
+*{
+    box-sizing: border-box;
+}
+li, ul{
+    list-style-type: none;
+}
+h1,h2,h3,h4,h5,ul,li{
+    margin: 0;
+    padding: 0;
+}
+button{
+    background-color: transparent;
+    border: none;
+    padding-left: 0;
+    margin: 0;
+}
+body, button, a {
+    color: white;
+    font-family: 'Arial';
+
+}
 body{
     margin: 0;
     padding: 0;
@@ -7,8 +28,112 @@ body{
 .contains{
     width: 100%;
     height: 100%;
+    /* background-color: rgb(156, 84, 224); */
 }
-.menuItems{
+.start_menu{
     position: fixed;
-    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(156, 84, 224);
 }
+.menu_container{
+    width: 90%;
+    height: 90%;
+    border-radius: 20px;
+    padding: 25px;
+    background-color: rgb(255, 255, 255);
+}
+.start_header{
+    position: relative;
+    display: flex;
+    gap: 10px;
+    top: -50px;
+    font-size: 1.5em;
+    justify-content: space-between;
+    align-items: center;
+}
+.start_title{
+    background-color: rgb(84, 77, 179);
+    padding: 10px 30px;
+    border-radius: 20px;
+    box-shadow:  0 10px 5px 0 rgb(32, 30, 68);
+    height: 90px;
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+.start_settings-button{
+    height: 90px;
+    width: 90px;
+    padding: 12px;
+    border-radius: 15px;
+    background-color: rgb(147, 144, 189);
+    background: linear-gradient(rgb(124, 121, 163), rgb(86, 80, 170));
+    box-shadow:  0 10px 5px 0 rgb(32, 30, 68);
+}
+.imag_setting{
+    font-size: 0;
+    border: 1px solid gray;
+    border-radius: 15px;
+    padding: 8px;
+    box-shadow: inset 0 0 10px 1px rgb(32, 30, 68);
+}
+.img_setting{
+    width: 100%;
+    height: 100%;
+}
+.choise_background{
+    border-radius: 20px;
+    border: 1px solid green;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+
+}
+.game_list{
+    /* display: inline-block; */
+    
+}
+
+.game_item{
+    /* display: inline-block; */
+    width: 200px;
+    height: 250px;
+    background-image: url('/img/belosnegka.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.choise_item-img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* .menuItems{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(156, 84, 224);
+    display: flex;
+    display: none;
+
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+} */
+/* .menu{
+    border-radius: 20px;
+    padding: 20px;
+    border: 4px solid rgb(82, 216, 82);
+
+} */

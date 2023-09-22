@@ -11,11 +11,20 @@ let START_TIME = null;
 let END_TIME = null;
 let CORRECT_PIEZES = new Set();
 let IMAG = new Image();
-IMAG.src = "img/belosnegka.png";
+let BELL_AUDIO = new Audio('/sound/bell.mp3');
+let PAZZLE_AUDIO = new Audio('/sound/pazzle.mp3');
+console.log(BELL_AUDIO);
+//   audio.src = 'click.mp3'; // Указываем путь к звуку "клика"
+//   audio.autoplay = true; // Автоматически запускаем
 
-
-
+function choisiImag(str){
+    IMAG.src = str;
+}
+function playSound(audio){
+    audio.play();
+}
 function main() {
+    choisiImag("img/belosnegka.png");
     CANVAS = document.getElementById('myCanvas');
     CONTEXT = CANVAS.getContext('2d');
     addEventListener();
@@ -40,25 +49,21 @@ function setDifficult() {
         case 'easy': {
             SIZE.rows = 3;
             SIZE.columns = 3;
-            // initialPieze(3,3);
             break;
         };
         case 'medium': {
             SIZE.rows = 5;
             SIZE.columns = 5;
-            // initialPieze(5,5);
             break;
         }
         case 'hard': {
             SIZE.rows = 10;
             SIZE.columns = 10;
-            // initialPieze(10,10);
             break;
         }
         case 'insane': {
             SIZE.rows = 12;
             SIZE.columns = 16;
-            // initialPieze(16, 24);
             break;
         }
     }
@@ -176,10 +181,6 @@ function updateCanvas() {
     CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
     CONTEXT.globalAlpha = 0.5;
     CONTEXT.drawImage(VIDEO, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
-    // imag.addEventListener('load',()=>{
-    //     console.log(11);
-    // },false)
-    // imag.src = "img/belosnegka.png";
     CONTEXT.drawImage(IMAG, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
     CONTEXT.globalAlpha = 1;
     for (let i = 0; i < PIEZES.length; i++) {
@@ -499,6 +500,7 @@ class Piece {
         this.x = this.correctCoord.x;
         this.y = this.correctCoord.y;
         this.correct = true;
-        CORRECT_PIEZES.add(`${this.x}, ${this.y}`)
+        playSound(BELL_AUDIO);
+        CORRECT_PIEZES.add(`${this.x}, ${this.y}`);
     }
 }
