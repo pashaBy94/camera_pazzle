@@ -32,9 +32,11 @@ a {
     font-family: 'Arial';
 
 }
-html{
+
+html {
     font-size: 16px;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -68,7 +70,8 @@ body {
     background-color: rgb(255, 255, 255);
 }
 
-.start_header, .setting_header {
+.start_header,
+.setting_header {
     position: relative;
     display: flex;
     gap: .8rem;
@@ -78,7 +81,8 @@ body {
     align-items: center;
 }
 
-.start_title, .setting_title {
+.start_title,
+.setting_title {
     background-color: rgb(84, 77, 179);
     padding: .6rem 3rem;
     border-radius: 1rem;
@@ -89,7 +93,8 @@ body {
     align-items: center;
 }
 
-.start_settings-button, .setting_button-close {
+.start_settings-button,
+.setting_button-close {
     height: 5.5rem;
     width: 5.5rem;
     padding: .7rem;
@@ -98,7 +103,7 @@ body {
     box-shadow: 0 .6rem .3rem 0 rgb(32, 30, 68);
 }
 
-.imag_setting{
+.imag_setting {
     font-size: 0;
     border: 1px solid gray;
     border-radius: 1rem;
@@ -106,7 +111,8 @@ body {
     box-shadow: inset 0 0 .6rem 1px rgb(32, 30, 68);
 }
 
-.img_setting, .img_close {
+.img_setting,
+.img_close {
     width: 100%;
     height: 100%;
 }
@@ -156,7 +162,7 @@ body {
     align-items: center;
 }
 
-.modal_settings{
+.modal_settings {
     position: fixed;
     top: 0;
     left: 0;
@@ -165,9 +171,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
 }
-.modal_settings-background{
+
+.modal_settings-background {
     position: absolute;
     top: 0;
     left: 0;
@@ -177,7 +184,8 @@ body {
     opacity: 0.5;
     z-index: 1;
 }
-.modal_settings-content{
+
+.modal_settings-content {
     width: 80%;
     height: 80%;
     background-color: white;
@@ -197,8 +205,51 @@ body {
     padding: .4rem;
 }
 
+.setting_body {
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
 
+.setting_item {
+    display: flex;
+    align-items: center;
+}
+.setting_name{
+    width: 9rem;
+    font-size: 2rem;
+    line-height: .1rem;
+}
+.music_input {
+    display: none;
+}
+.music_input:checked ~ .music_check{
+    background-color: chartreuse;
+    justify-content: end;
+}
 
+.music_check {
+    display: flex;
+    justify-content: start;
+    width: 4rem;
+    height: 2rem;
+    border: .3rem solid white;
+    box-shadow: 2px 1px 5px 1px gray,
+        inset 1px 1px 2px 1px rgb(202, 200, 200);
+    border-radius: 1rem;
+    background-color: blanchedalmond;
+    cursor: pointer;
+}
+
+.check_roll {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    background-color: blueviolet;
+    box-shadow: inset 0 0 1px 3px rgb(175, 81, 179);
+}
 
 /* .menuItems{
     position: fixed;

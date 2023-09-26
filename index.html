@@ -80,7 +80,7 @@
       <div class="modal_settings-content setting">
         <div class="setting_header">
           <h1 class="setting_title">
-            Выбери сценарий
+            Настройки
           </h1>
           <div class="setting_button-close" onclick="openStartMenu()">
             <div class="imag_close">
@@ -91,10 +91,30 @@
         <div class="setting_body">
           <ul class="setting_list">
             <li class="setting_item">
-              <p class="setting_name"></p>
+              <p class="setting_name">Музыка</p>
               <label for="music">
-                <input type="radio" name="music" id="music">
-                <div class="music_check"></div>
+                <input type="checkbox" name="music" id="music" class="music_input" checked>
+                <div class="music_check">
+                  <div class="check_roll"></div>
+                </div>
+              </label>
+            </li>
+            <li class="setting_item">
+              <p class="setting_name">Звуки</p>
+              <label for="sound">
+                <input type="checkbox" name="sound" id="sound" class="music_input" checked>
+                <div class="music_check">
+                  <div class="check_roll"></div>
+                </div>
+              </label>
+            </li>
+            <li class="setting_item">
+              <p class="setting_name">Время</p>
+              <label for="time">
+                <input type="checkbox" name="time" id="time" class="music_input" checked>
+                <div class="music_check">
+                  <div class="check_roll"></div>
+                </div>
               </label>
             </li>
           </ul>
