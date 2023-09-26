@@ -19,7 +19,7 @@
           <h1 class="start_title">
             Выбери сценарий
           </h1>
-          <div class="start_settings-button" onclick="openStartMenu()">
+          <div class="start_settings-button" onclick="openSettings()">
             <div class="imag_setting">
               <img class="img_setting" src="img/setting.svg" />
             </div>
@@ -82,7 +82,7 @@
           <h1 class="setting_title">
             Настройки
           </h1>
-          <div class="setting_button-close" onclick="openStartMenu()">
+          <div class="setting_button-close" onclick="closeSettings()">
             <div class="imag_close">
               <img class="img_close" src="img/close.svg" />
             </div>
@@ -118,6 +118,48 @@
               </label>
             </li>
           </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="check_sloshnost">
+      <div class="check_sloshnost-background"></div>
+      <div class="check_sloshnost-content check">
+        <div class="check_header">
+          <h1 class="check_title">
+            Выбери сложность
+          </h1>
+          <div class="check_button-prev" onclick="checkSloznosty()">
+            <div class="imag_arrow">
+              <img class="img_arrow" src="img/close.svg" />
+            </div>
+          </div>
+        </div>
+        <div class="check_body">
+          <div class="check_background">
+            <ul class="check_list">
+              <li class="check_item sl1">
+                <div class="check_level_item">
+                  <h2 class="check_level_item-name">Легко</h2>
+                </div>
+              </li>
+              <li class="check_item sl2">
+                <div class="check_level_item">
+                  <h2 class="check_level_item-name">Средне</h2>
+                </div>
+              </li>
+              <li class="check_item sl3">
+                <div class="check_level_item">
+                  <h2 class="check_level_item-name">Тяжело</h2>
+                </div>
+              </li>
+              <li class="check_item sl4">
+                <div class="check_level_item">
+                  <h2 class="check_level_item-name">Очень тяжело</h2>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>

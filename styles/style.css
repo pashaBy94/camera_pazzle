@@ -50,7 +50,8 @@ body {
     /* background-color: rgb(156, 84, 224); */
 }
 
-.start_menu {
+.start_menu,
+.check_sloshnost {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -62,7 +63,8 @@ body {
     background-color: rgb(156, 84, 224);
 }
 
-.menu_container {
+.menu_container,
+.check_sloshnost-content {
     width: 90%;
     height: 90%;
     border-radius: 1.2rem;
@@ -71,7 +73,8 @@ body {
 }
 
 .start_header,
-.setting_header {
+.setting_header,
+.check_header {
     position: relative;
     display: flex;
     gap: .8rem;
@@ -82,7 +85,8 @@ body {
 }
 
 .start_title,
-.setting_title {
+.setting_title ,
+.check_title{
     background-color: rgb(84, 77, 179);
     padding: .6rem 3rem;
     border-radius: 1rem;
@@ -94,7 +98,9 @@ body {
 }
 
 .start_settings-button,
-.setting_button-close {
+.setting_button-close,
+.check_button-prev {
+    cursor: pointer;
     height: 5.5rem;
     width: 5.5rem;
     padding: .7rem;
@@ -102,7 +108,16 @@ body {
     background: linear-gradient(rgb(124, 121, 163), rgb(86, 80, 170));
     box-shadow: 0 .6rem .3rem 0 rgb(32, 30, 68);
 }
+.start_settings-button:hover{
+    box-shadow: 0 .3rem .3rem 0 rgb(32, 30, 68);
+    transform: translateY(3px);
 
+}
+.setting_button-close:hover,
+.check_button-prev:hover{
+    box-shadow: 0 .3rem .3rem 0 rgb(156, 78, 167);
+    transform: translateY(3px);
+}
 .imag_setting {
     font-size: 0;
     border: 1px solid gray;
@@ -112,12 +127,14 @@ body {
 }
 
 .img_setting,
-.img_close {
+.img_close,
+.img_arrow {
     width: 100%;
     height: 100%;
 }
 
-.choise_background {
+.choise_background,
+.check_background {
     position: relative;
     top: 2rem;
     display: flex;
@@ -127,7 +144,8 @@ body {
 
 }
 
-.game_list {
+.game_list,
+.check_list {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -136,7 +154,8 @@ body {
 
 }
 
-.game_item {
+.game_item,
+.check_item {
     display: block;
     position: relative;
     width: 20em;
@@ -148,7 +167,7 @@ body {
     background-position: center;
 }
 
-.choise_item {
+.choise_item{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -163,15 +182,14 @@ body {
 }
 
 .modal_settings {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .modal_settings-background {
@@ -250,6 +268,22 @@ body {
     background-color: blueviolet;
     box-shadow: inset 0 0 1px 3px rgb(175, 81, 179);
 }
+.check_item{
+    border: .3rem solid gray;
+}
+.check_level_item{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom-left-radius: 1.2rem;
+    border-bottom-right-radius: 1.2rem;
+    height: 2.6rem;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* .menuItems{
     position: fixed;
@@ -271,3 +305,11 @@ body {
     border: 4px solid rgb(82, 216, 82);
 
 } */
+
+
+.open{
+    display: flex;
+}
+.close{
+    display: none;
+}
