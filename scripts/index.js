@@ -1,6 +1,7 @@
 let VIDEO = null;
 let CANVAS = null;
 let CONTEXT = null;
+let initailValues = { isMusic: true, isSound: true, isTime: true, imag: new Image(), difficult: null, backGround: 'blueviolet' };
 let SIZE = { x: 0, y: 0, width: 0, height: 0, rows: 2, columns: 3 };
 let SCALER = 0.7;
 let PIEZES = [];
@@ -10,20 +11,17 @@ let SELECTED_PIEZES = null;
 let START_TIME = null;
 let END_TIME = null;
 let CORRECT_PIEZES = new Set();
-let IMAG = new Image();
 let BELL_AUDIO = new Audio('/sound/bell.mp3');
 let PAZZLE_AUDIO = new Audio('/sound/pazzle.mp3');
-console.log(BELL_AUDIO);
-//   audio.src = 'click.mp3'; // Указываем путь к звуку "клика"
-//   audio.autoplay = true; // Автоматически запускаем
 
-function choisiImag(str){
-    IMAG.src = str;
+function choisiImag(str) {
+    initailValues.imag.src = str;
 }
-function playSound(audio){
-    audio.play();
+function playSound(audio) {
+    if(initailValues.isSound) audio.play();
 }
 function main() {
+    setDifficult();
     choisiImag("img/belosnegka.png");
     CANVAS = document.getElementById('myCanvas');
     CONTEXT = CANVAS.getContext('2d');
@@ -35,17 +33,16 @@ function main() {
         VIDEO.srcObject = signal;
         VIDEO.play();
         VIDEO.onloadeddata = () => {
-                handleResize();
-                window.addEventListener('resize', handleResize);
-                initialPieze();
-                randomizePiezes();
-                updateCanvas();
-            }
+            handleResize();
+            window.addEventListener('resize', handleResize);
+            initialPieze();
+            randomizePiezes();
+            updateCanvas();
+        }
     }).catch(err => alert('camera error:' + err))
 }
 function setDifficult() {
-    let difficult = document.querySelector('#difficult').value;
-    switch (difficult) {
+    switch (initailValues.difficult) {
         case 'easy': {
             SIZE.rows = 3;
             SIZE.columns = 3;
@@ -180,15 +177,20 @@ function getSelectedPiezes(evt) {
 function updateCanvas() {
     CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
     CONTEXT.globalAlpha = 0.5;
+    CONTEXT.rect(0,0,CANVAS.width, CANVAS.height);
+    CONTEXT.fillStyle = initailValues.backGround;
+    CONTEXT.fill();
     CONTEXT.drawImage(VIDEO, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
-    CONTEXT.drawImage(IMAG, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
+    CONTEXT.drawImage(initailValues.imag, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
     CONTEXT.globalAlpha = 1;
     for (let i = 0; i < PIEZES.length; i++) {
         PIEZES[i].draw(CONTEXT);
     }
-    requestAnimationFrame(updateCanvas)
+    requestAnimationFrame(updateCanvas);
 }
-
+// function removeCanvas() {
+//     CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
+// }
 function handleResize() {
 
     CANVAS.width = window.innerWidth;
@@ -245,10 +247,14 @@ function initialPieze() {
 }
 
 function randomizePiezes() {
+    let y;
     for (let i = 0; i < PIEZES.length; i++) {
         PIEZES[i].x = Math.random() * (CANVAS.width - PIEZES[i].width);
-        PIEZES[i].y = Math.random() * (CANVAS.height - PIEZES[i].height);
+        y = Math.random() * (CANVAS.height - PIEZES[i].height);
+        PIEZES[i].y = (y < 70)?70:y;
     }
+    playSound(PAZZLE_AUDIO);
+    
 }
 
 class Piece {
@@ -263,7 +269,6 @@ class Piece {
         this.correct = false;
     }
     draw(context) {
-        // console.log(IMAG);
         context.beginPath();
         let sz = Math.min(this.width, this.height);
         let nes = 0.05 * sz;
@@ -358,7 +363,7 @@ class Piece {
         context.clip();
 
         const scaledTabHeight = Math.min(VIDEO.videoWidth / SIZE.columns, VIDEO.videoHeight / SIZE.rows) * tabHeight / sz;
-        const imagTabHeight = Math.min(IMAG.width / SIZE.columns, IMAG.height / SIZE.rows) * tabHeight / sz;
+        const imagTabHeight = Math.min(initailValues.imag.width / SIZE.columns, initailValues.imag.height / SIZE.rows) * tabHeight / sz;
         CONTEXT.drawImage(
             VIDEO,
             this.colIndex * VIDEO.videoWidth / SIZE.columns - scaledTabHeight,
@@ -371,11 +376,11 @@ class Piece {
             this.height + tabHeight * 2
         );
         CONTEXT.drawImage(
-            IMAG,
-            this.colIndex * IMAG.width / SIZE.columns - imagTabHeight,
-            this.rowIndex * IMAG.height / SIZE.rows - imagTabHeight,
-            IMAG.width / SIZE.columns + imagTabHeight * 2,
-            IMAG.height / SIZE.rows + imagTabHeight * 2,
+            initailValues.imag,
+            this.colIndex * initailValues.imag.width / SIZE.columns - imagTabHeight,
+            this.rowIndex * initailValues.imag.height / SIZE.rows - imagTabHeight,
+            initailValues.imag.width / SIZE.columns + imagTabHeight * 2,
+            initailValues.imag.height / SIZE.rows + imagTabHeight * 2,
             this.x - tabHeight,
             this.y - tabHeight,
             this.width + tabHeight * 2,
