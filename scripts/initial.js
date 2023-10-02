@@ -14,6 +14,7 @@ const checkBack = document.querySelector('.check_back');
 const back = document.querySelectorAll('.check_item-back');
 
 addEventListenerInitial();
+
 function addEventListenerInitial() {
     settingTohome.addEventListener('click', goToHome);
     for (let i = 0; i < items.length; i++) {
@@ -34,25 +35,35 @@ function openSettings(ev) {
     modal.classList.add('open');
     modal.classList.remove('close')
 }
+
 function closeSettings() {
     modal.classList.add('close')
     modal.classList.remove('open')
 }
 function selectSlochnostyOpen(ev){
     let imagBackground = getComputedStyle(ev.target).backgroundImage;
+    if(imagBackground !== 'none'){
+        let regExp = /(?<=url\(\")/;
+        let length = imagBackground.split(regExp)[1].length;
+        let result = imagBackground.split(regExp)[1].split('').splice(0, length-2).join('');
+        choisiImag(result);
+    }
     checkBack.classList.remove('open');
     viborSlosnosty.classList.add('open');
-
 }
 function selectScenari(ev) {
     let classNames = ev.target.classList;
     for (let i = 0; i < classNames.length; i++) {
         if(classNames[i].split('_')[1] === 'pazzle'){
             initailValues.isPazzle = classNames[i].split('_')[0];
+            if(initailValues.isPazzle == 'imag') initailValues.isVideo = false;
         }
     }
     startMenu.classList.add('close');
     checkBack.classList.add('open');
+}
+function choisiImag(str) {
+    initailValues.imag.src = str;
 }
 function checkSloznosty(){
     checkBack.classList.add('open');

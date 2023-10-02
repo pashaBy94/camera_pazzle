@@ -245,7 +245,6 @@ body {
 }
 
 .setting_button-close {
-
     background: linear-gradient(rgb(162, 121, 163), rgb(192, 74, 192));
     box-shadow: 0 .6rem .3rem 0 rgb(57, 30, 68);
 }
@@ -387,7 +386,18 @@ body {
 }
 .check_item-back {
     border: .3rem solid rgb(212, 248, 255);
-    background-image: url('/img/orig.jpg');
+}
+.back-1{
+        background-color: rgba(0, 0, 0, 0.26);
+}
+.back-2{
+    background-image: url('/img/belosnegka.png');
+}
+.back-3{
+    background-image: url('/img/aist.png');
+}
+.back-4{
+    background-image: url('/img/gusy.png');
 }
 .open {
     display: flex;
@@ -395,4 +405,11 @@ body {
 
 .close {
     display: none;
+}
+.test{
+    position: fixed;
+    bottom: 100px;
+    left: 100px;
+    padding: 10px;
+    background-color: red;
 }
