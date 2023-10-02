@@ -1,7 +1,7 @@
 let VIDEO = null;
 let CANVAS = null;
 let CONTEXT = null;
-let initailValues = { isMusic: true, isSound: true, isTime: true, imag: new Image(), difficult: null, backGround: 'blueviolet' };
+let initailValues = { isMusic: true, isPazzle: 'video', isSound: true, isTime: true, imag: new Image(), difficult: null, backGround: 'blueviolet' };
 let SIZE = { x: 0, y: 0, width: 0, height: 0, rows: 2, columns: 3 };
 let SCALER = 0.7;
 let PIEZES = [];
@@ -18,28 +18,42 @@ function choisiImag(str) {
     initailValues.imag.src = str;
 }
 function playSound(audio) {
-    if(initailValues.isSound) audio.play();
+    if (initailValues.isSound) audio.play();
 }
 function main() {
     setDifficult();
-    choisiImag("img/belosnegka.png");
     CANVAS = document.getElementById('myCanvas');
     CONTEXT = CANVAS.getContext('2d');
     addEventListener();
-
-    let promise = navigator.mediaDevices.getUserMedia({ video: true }); //video: {width:{exact:200}, height:{exact:200}}
-    promise.then(signal => {
-        VIDEO = document.createElement('video');
-        VIDEO.srcObject = signal;
-        VIDEO.play();
-        VIDEO.onloadeddata = () => {
-            handleResize();
-            window.addEventListener('resize', handleResize);
-            initialPieze();
-            randomizePiezes();
-            updateCanvas();
+    switch (initailValues.isPazzle) {
+        case 'video': {
+            choisiImag("img/belosnegka.png");
+            let promise = navigator.mediaDevices.getUserMedia({ video: true }); //video: {width:{exact:200}, height:{exact:200}}
+            promise.then(signal => {
+                VIDEO = document.createElement('video');
+                VIDEO.srcObject = signal;
+                VIDEO.play();
+                VIDEO.onloadeddata = () => {
+                    handleResize();
+                    window.addEventListener('resize', handleResize);
+                    initialPieze();
+                    randomizePiezes();
+                    updateCanvas();
+                }
+            }).catch(err => alert('camera error:' + err))
+            break;
         }
-    }).catch(err => alert('camera error:' + err))
+        case 'photo': {
+
+            break;
+        }
+        case 'imag': {
+
+            break;
+        }
+        default:
+            break;
+    }
 }
 function setDifficult() {
     switch (initailValues.difficult) {
@@ -141,7 +155,6 @@ function isComplete() {
 }
 function comletedPiezes() {
     stopedTime();
-    console.log(formatedTime(END_TIME));
 }
 
 function onMouseUp(ev) {
@@ -177,7 +190,7 @@ function getSelectedPiezes(evt) {
 function updateCanvas() {
     CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
     CONTEXT.globalAlpha = 0.5;
-    CONTEXT.rect(0,0,CANVAS.width, CANVAS.height);
+    CONTEXT.rect(0, 0, CANVAS.width, CANVAS.height);
     CONTEXT.fillStyle = initailValues.backGround;
     CONTEXT.fill();
     CONTEXT.drawImage(VIDEO, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
@@ -188,11 +201,7 @@ function updateCanvas() {
     }
     requestAnimationFrame(updateCanvas);
 }
-// function removeCanvas() {
-//     CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
-// }
 function handleResize() {
-
     CANVAS.width = window.innerWidth;
     CANVAS.height = window.innerHeight;
     let resizer = SCALER * Math.min(
@@ -251,10 +260,11 @@ function randomizePiezes() {
     for (let i = 0; i < PIEZES.length; i++) {
         PIEZES[i].x = Math.random() * (CANVAS.width - PIEZES[i].width);
         y = Math.random() * (CANVAS.height - PIEZES[i].height);
-        PIEZES[i].y = (y < 70)?70:y;
+        PIEZES[i].y = (y < 70) ? 70 : y;
     }
-    playSound(PAZZLE_AUDIO);
-    
+    if (initailValues.isSound)
+        playSound(PAZZLE_AUDIO);
+
 }
 
 class Piece {
@@ -363,7 +373,6 @@ class Piece {
         context.clip();
 
         const scaledTabHeight = Math.min(VIDEO.videoWidth / SIZE.columns, VIDEO.videoHeight / SIZE.rows) * tabHeight / sz;
-        const imagTabHeight = Math.min(initailValues.imag.width / SIZE.columns, initailValues.imag.height / SIZE.rows) * tabHeight / sz;
         CONTEXT.drawImage(
             VIDEO,
             this.colIndex * VIDEO.videoWidth / SIZE.columns - scaledTabHeight,
@@ -375,6 +384,7 @@ class Piece {
             this.width + tabHeight * 2,
             this.height + tabHeight * 2
         );
+        const imagTabHeight = Math.min(initailValues.imag.width / SIZE.columns, initailValues.imag.height / SIZE.rows) * tabHeight / sz;
         CONTEXT.drawImage(
             initailValues.imag,
             this.colIndex * initailValues.imag.width / SIZE.columns - imagTabHeight,
@@ -505,7 +515,8 @@ class Piece {
         this.x = this.correctCoord.x;
         this.y = this.correctCoord.y;
         this.correct = true;
-        playSound(BELL_AUDIO);
+        if (initailValues.isSound)
+            playSound(BELL_AUDIO);
         CORRECT_PIEZES.add(`${this.x}, ${this.y}`);
     }
 }

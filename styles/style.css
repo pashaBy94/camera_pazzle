@@ -50,7 +50,8 @@ body {
 }
 
 .start_menu,
-.check_sloshnost {
+.check_sloshnost,
+.check_back {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -63,7 +64,8 @@ body {
 }
 
 .menu_container,
-.check_sloshnost-content {
+.check_sloshnost-content,
+.check_back-content {
     width: 90%;
     height: 90%;
     border-radius: 1.2rem;
@@ -172,7 +174,8 @@ body {
 }
 
 .game_item,
-.check_item {
+.check_item,
+.check_item-back {
     display: block;
     position: relative;
     width: 20em;
@@ -218,7 +221,9 @@ body {
     align-items: center;
     z-index: 100;
 }
-
+.setting_modal-game{
+    display: none;
+}
 .modal_settings-background {
     position: absolute;
     top: 0;
@@ -270,16 +275,16 @@ body {
     line-height: .1rem;
 }
 
-.music_input {
+.input_setting {
     display: none;
 }
 
-.music_input:checked~.music_check {
+.input_setting:checked~.input_check {
     background-color: chartreuse;
     justify-content: end;
 }
 
-.music_check {
+.input_check {
     display: flex;
     justify-content: start;
     width: 4rem;
@@ -377,7 +382,13 @@ body {
     width: 5.5rem;
     box-shadow: 0 .6rem .3rem 0 rgb(59, 146, 59);
 }
-
+.check_back{
+    display: none;
+}
+.check_item-back {
+    border: .3rem solid rgb(212, 248, 255);
+    background-image: url('/img/orig.jpg');
+}
 .open {
     display: flex;
 }

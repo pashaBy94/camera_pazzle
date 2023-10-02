@@ -8,15 +8,25 @@ const timeInput = document.querySelector('#time');
 const menuTop = document.querySelector('.menu_top');
 const settingTohome = document.querySelector('.setting_tohome');
 const modal = document.querySelector('.modal_settings');
+const settingModalGame = document.querySelector('.setting_modal-game');
+const inputSetting = document.querySelectorAll('.input_setting');
+const checkBack = document.querySelector('.check_back');
+const back = document.querySelectorAll('.check_item-back');
 
 addEventListenerInitial();
 function addEventListenerInitial() {
     settingTohome.addEventListener('click', goToHome);
     for (let i = 0; i < items.length; i++) {
-        items[i].addEventListener('click', openBarSloshnost);
+        items[i].addEventListener('click', selectScenari);
     }
     for(let i = 0; i < checkItems.length; i++){
         checkItems[i].addEventListener('click', startGame);
+    }
+    for (let i = 0; i < inputSetting.length; i++) {
+        inputSetting[i].addEventListener('change', installInitalValues);
+    }
+    for (let i = 0; i < back.length; i++) {
+        back[i].addEventListener('click', selectSlochnostyOpen);
     }
 }
 
@@ -28,15 +38,32 @@ function closeSettings() {
     modal.classList.add('close')
     modal.classList.remove('open')
 }
-function openBarSloshnost(ev) {
-    startMenu.classList.add('close');
+function selectSlochnostyOpen(ev){
+    let imagBackground = getComputedStyle(ev.target).backgroundImage;
+    checkBack.classList.remove('open');
     viborSlosnosty.classList.add('open');
+
+}
+function selectScenari(ev) {
+    let classNames = ev.target.classList;
+    for (let i = 0; i < classNames.length; i++) {
+        if(classNames[i].split('_')[1] === 'pazzle'){
+            initailValues.isPazzle = classNames[i].split('_')[0];
+        }
+    }
+    startMenu.classList.add('close');
+    checkBack.classList.add('open');
 }
 function checkSloznosty(){
-    startMenu.classList.remove('close');
+    checkBack.classList.add('open');
     viborSlosnosty.classList.remove('open');
 }
+function checkBackground(){
+    startMenu.classList.remove('close');
+    checkBack.classList.remove('open');
+}
 function startGame(){
+    settingModalGame.classList.add('open');
     viborSlosnosty.classList.remove('open');
     menuTop.classList.add('open');
     initailValues.isMusic = musicInput.checked;
@@ -63,9 +90,22 @@ function startGame(){
     }
     main();
 }
+function installInitalValues(){
+    initailValues.isSound = soundInput.checked;
+    initailValues.isMusic = musicInput.checked;
+    initailValues.isTime = timeInput.checked;
+}
 function goToHome(){
+    settingModalGame.classList.remove('open');
+    promise = null;
     menuTop.classList.remove('open');
     startMenu.classList.remove('close');
     modal.classList.add('close');
-    // removeCanvas();
+    PIEZES.length = 0;
+    CURRENT_PIEZED_INDEX = null;
+    SELECTED_PIEZES = null;
+    START_TIME = null;
+    END_TIME = null;
+    CORRECT_PIEZES = new Set(); 
+    VIDEO = null;
 }
