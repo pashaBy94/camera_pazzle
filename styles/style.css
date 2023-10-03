@@ -50,8 +50,8 @@ body {
 }
 
 .start_menu,
-.check_sloshnost,
-.check_back {
+.select_difficult,
+.select_back {
     position: fixed;
     display: flex;
     justify-content: center;
@@ -63,9 +63,9 @@ body {
     background-color: rgb(156, 84, 224);
 }
 
-.menu_container,
-.check_sloshnost-content,
-.check_back-content {
+.start_container,
+.select_difficult-content,
+.select_back-content {
     width: 90%;
     height: 90%;
     border-radius: 1.2rem;
@@ -74,8 +74,8 @@ body {
 }
 
 .start_header,
-.setting_header,
-.check_header {
+.settings_header,
+.select_header {
     position: relative;
     display: flex;
     gap: .8rem;
@@ -86,8 +86,8 @@ body {
 }
 
 .start_title,
-.setting_title,
-.check_title {
+.settings_title,
+.select_title {
     background-color: rgb(84, 77, 179);
     padding: .6rem 3rem;
     border-radius: 1rem;
@@ -99,10 +99,10 @@ body {
 }
 
 .start_settings-button,
-.setting_button-close,
-.check_button-prev,
+.settings_close,
+.select_close,
 .top_menu-button,
-.setting_tohome {
+.subsettings_return-start {
     cursor: pointer;
     padding: .7rem;
     border-radius: 1rem;
@@ -110,8 +110,8 @@ body {
 }
 
 .start_settings-button,
-.setting_button-close,
-.check_button-prev {
+.settings_close,
+.select_close {
     height: 5.5rem;
     width: 5.5rem;
     box-shadow: 0 .6rem .3rem 0 rgb(32, 30, 68);
@@ -124,18 +124,21 @@ body {
 
 }
 
-.setting_button-close:hover,
-.check_button-prev:hover {
+.settings_close:hover,
+.select_close:hover {
     box-shadow: 0 .3rem .3rem 0 rgb(156, 78, 167);
     transform: translateY(3px);
 }
-.setting_tohome:hover {
+
+.subsettings_return-start:hover {
     box-shadow: 0 .3rem .3rem 0 rgb(156, 78, 167);
     transform: translateY(3px);
 }
-.imag_setting,
-.top_menu_setting,
-.setting_imag {
+
+.settings_close-imag,
+.start_settings-imag,
+.subsettings_return_imag,
+.top_menu_setting {
     font-size: 0;
     border: 1px solid gray;
     border-radius: 1rem;
@@ -143,18 +146,18 @@ body {
     box-shadow: inset 0 0 .6rem 1px rgb(32, 30, 68);
 }
 
-.img_setting,
-.img_close,
-.img_arrow,
+.settings_close-img,
+.start_settings-img,
+.select_close-img,
 .top_img,
 .top_menu_img,
-.setting_img {
+.subsettings_return_img {
     width: 100%;
     height: 100%;
 }
 
-.choise_background,
-.check_background {
+.start_body,
+.select_content {
     position: relative;
     top: 2rem;
     display: flex;
@@ -164,8 +167,8 @@ body {
 
 }
 
-.game_list,
-.check_list {
+.start_list,
+.select_list {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -173,9 +176,9 @@ body {
     gap: 2em;
 }
 
-.game_item,
-.check_item,
-.check_item-back {
+.start_item,
+.select_item,
+.select_item-back {
     display: block;
     position: relative;
     width: 20em;
@@ -187,16 +190,16 @@ body {
     cursor: pointer;
 }
 
-.game_item {
+.start_item {
     background-image: url('/img/belosnegka.png');
 }
 
-.game_item:hover,
-.check_item:hover {
+.start_item:hover,
+.select_item:hover {
     opacity: 0.8;
 }
 
-.choise_item {
+.start_item-content {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -210,7 +213,7 @@ body {
     align-items: center;
 }
 
-.modal_settings {
+.settings_menu {
     display: none;
     position: fixed;
     top: 0;
@@ -221,10 +224,12 @@ body {
     align-items: center;
     z-index: 100;
 }
-.setting_modal-game{
+
+.subsettings_game {
     display: none;
 }
-.modal_settings-background {
+
+.settings_background {
     position: absolute;
     top: 0;
     left: 0;
@@ -235,7 +240,7 @@ body {
     z-index: 1;
 }
 
-.modal_settings-content {
+.settings_content {
     width: 80%;
     height: 80%;
     background-color: white;
@@ -244,17 +249,12 @@ body {
     padding: 1.6rem;
 }
 
-.setting_button-close {
+.settings_close {
     background: linear-gradient(rgb(162, 121, 163), rgb(192, 74, 192));
     box-shadow: 0 .6rem .3rem 0 rgb(57, 30, 68);
 }
 
-.imag_close {
-    font-size: 0;
-    padding: .4rem;
-}
-
-.setting_body {
+.settings_body {
     color: black;
     display: flex;
     flex-direction: column;
@@ -263,27 +263,27 @@ body {
     margin-top: 4rem;
 }
 
-.setting_item {
+.settings_item {
     display: flex;
     align-items: center;
 }
 
-.setting_name {
+.settings_name {
     width: 9rem;
     font-size: 2rem;
     line-height: .1rem;
 }
 
-.input_setting {
+.settings_input {
     display: none;
 }
 
-.input_setting:checked~.input_check {
+.settings_input:checked~.settings_switch {
     background-color: chartreuse;
     justify-content: end;
 }
 
-.input_check {
+.settings_switch {
     display: flex;
     justify-content: start;
     width: 4rem;
@@ -296,7 +296,7 @@ body {
     cursor: pointer;
 }
 
-.check_roll {
+.switch {
     height: 1.5rem;
     width: 1.5rem;
     border-radius: 50%;
@@ -304,12 +304,12 @@ body {
     box-shadow: inset 0 0 1px 3px rgb(175, 81, 179);
 }
 
-.check_item {
+.select_item {
     border: .3rem solid rgb(212, 248, 255);
     background-image: url('/img/orig.jpg');
 }
 
-.check_level_item {
+.select_item-content {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -322,30 +322,30 @@ body {
     align-items: center;
 }
 
-.easy .check_level_item {
+.easy .select_item-content {
     background: rgba(58, 234, 82, 0.7);
 
 }
 
-.medium .check_level_item {
+.medium .select_item-content {
     background: rgba(234, 208, 58, 0.7);
 
 }
 
-.hard .check_level_item {
+.hard .select_item-content {
     background: rgba(224, 82, 79, 0.7);
 
 }
 
-.insane .check_level_item {
+.insane .select_item-content {
     background: rgba(142, 88, 23, 0.7);
 }
 
-.check_sloshnost {
+.select_difficult {
     display: none;
 }
 
-.menu_top {
+.top_menu {
     position: fixed;
     display: none;
     justify-content: space-between;
@@ -375,30 +375,37 @@ body {
     font-weight: bold;
 }
 
-.setting_tohome {
+.subsettings_return-start {
     background: linear-gradient(rgb(112, 186, 107), rgb(80, 170, 83));
     height: 5.5rem;
     width: 5.5rem;
     box-shadow: 0 .6rem .3rem 0 rgb(59, 146, 59);
 }
-.check_back{
+
+.select_back {
     display: none;
 }
-.check_item-back {
+
+.select_item-back {
     border: .3rem solid rgb(212, 248, 255);
 }
-.back-1{
-        background-color: rgba(0, 0, 0, 0.26);
+
+.back-1 {
+    background-color: rgba(0, 0, 0, 0.26);
 }
-.back-2{
+
+.back-2 {
     background-image: url('/img/belosnegka.png');
 }
-.back-3{
+
+.back-3 {
     background-image: url('/img/aist.png');
 }
-.back-4{
+
+.back-4 {
     background-image: url('/img/gusy.png');
 }
+
 .open {
     display: flex;
 }
@@ -406,13 +413,11 @@ body {
 .close {
     display: none;
 }
-.test{
+
+.test {
     position: fixed;
     bottom: 100px;
     left: 100px;
     padding: 10px;
     background-color: red;
 }
-/* .time{
-    display: none;
-} */

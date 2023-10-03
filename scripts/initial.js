@@ -1,21 +1,20 @@
-const items = document.querySelectorAll('.game_item');
+const items = document.querySelectorAll('.start_item');
 const startMenu = document.querySelector('.start_menu');
-const viborSlosnosty = document.querySelector('.check_sloshnost');
-const checkItems = document.querySelectorAll('.check_item');
+const viborSlosnosty = document.querySelector('.select_difficult');
+const checkItems = document.querySelectorAll('.select_item');
 const musicInput = document.querySelector('#music');
 const soundInput = document.querySelector('#sound');
 const timeInput = document.querySelector('#time');
-const menuTop = document.querySelector('.menu_top');
-const settingTohome = document.querySelector('.setting_tohome');
-const modal = document.querySelector('.modal_settings');
-const settingModalGame = document.querySelector('.setting_modal-game');
-const inputSetting = document.querySelectorAll('.input_setting');
-const checkBack = document.querySelector('.check_back');
-const back = document.querySelectorAll('.check_item-back');
+const menuTop = document.querySelector('.top_menu');
+const settingTohome = document.querySelector('.subsettings_return-start');
+const settingsMenu = document.querySelector('.settings_menu');
+const settingModalGame = document.querySelector('.subsettings_game');
+const inputSetting = document.querySelectorAll('.settings_input');
+const checkBack = document.querySelector('.select_back');
+const back = document.querySelectorAll('.select_item-back');
 const time = document.querySelector('.time');
 
 addEventListenerInitial();
-
 function addEventListenerInitial() {
     settingTohome.addEventListener('click', goToHome);
     for (let i = 0; i < items.length; i++) {
@@ -32,14 +31,14 @@ function addEventListenerInitial() {
     }
 }
 
-function openSettings(ev) {
-    modal.classList.add('open');
-    modal.classList.remove('close')
+function openSettings() {
+    settingsMenu.classList.add('open');
+    settingsMenu.classList.remove('close')
 }
 
 function closeSettings() {
-    modal.classList.add('close')
-    modal.classList.remove('open')
+    settingsMenu.classList.add('close')
+    settingsMenu.classList.remove('open')
 }
 function selectSlochnostyOpen(ev) {
     let imagBackground = getComputedStyle(ev.target).backgroundImage;
@@ -66,11 +65,11 @@ function selectScenari(ev) {
 function choisiImag(str) {
     initailValues.imag.src = str;
 }
-function checkSloznosty() {
+function openMenuDifficult() {
     checkBack.classList.add('open');
     viborSlosnosty.classList.remove('open');
 }
-function checkBackground() {
+function openMenuBackgroundPazzle() {
     startMenu.classList.remove('close');
     checkBack.classList.remove('open');
 }
@@ -106,6 +105,8 @@ function installInitalValues() {
     initailValues.isSound = soundInput.checked;
     initailValues.isMusic = musicInput.checked;
     initailValues.isTime = timeInput.checked;
+    // stopMusic(MUSIC);
+    playMusic(MUSIC);
     showTime();
 
 }
@@ -118,17 +119,9 @@ function showTime() {
 function goToHome() {
     if(document.querySelector('button'))
     document.querySelector('button').remove();
-    process.isGame = false;
     settingModalGame.classList.remove('open');
-    promise = null;
     menuTop.classList.remove('open');
     startMenu.classList.remove('close');
-    modal.classList.add('close');
-    PIEZES.length = 0;
-    CURRENT_PIEZED_INDEX = null;
-    SELECTED_PIEZES = null;
-    START_TIME = null;
-    END_TIME = null;
-    CORRECT_PIEZES = new Set();
-    VIDEO = null;
+    settingsMenu.classList.add('close');
+    setDefaultSettings();
 }

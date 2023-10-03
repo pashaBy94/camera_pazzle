@@ -12,121 +12,121 @@
 <body>
   <div class="contains">
     <div class="start_menu">
-      <div class="menu_container">
+      <div class="start_container">
         <div class="start_header">
           <h1 class="start_title">
             Выбери сценарий
           </h1>
           <div class="start_settings-button" onclick="openSettings()">
-            <div class="imag_setting">
-              <img class="img_setting" src="img/setting.svg" />
+            <div class="start_settings-imag">
+              <img class="start_settings-img" src="img/setting.svg" />
             </div>
           </div>
         </div>
-        <div class="choise_background">
-          <ul class="game_list">
-            <li class="game_item video_pazzle">
-              <div class="choise_item">
-                <h2 class="choise_item-name">Видео пазл</h2>
+        <div class="start_body">
+          <ul class="start_list">
+            <li class="start_item video_pazzle">
+              <div class="start_item-content">
+                <h2 class="start_item-title">Видео пазл</h2>
               </div>
             </li>
-            <li class="game_item photo_pazzle">
-              <div class="choise_item">
-                <h2 class="choise_item-name">Фото пазл</h2>
+            <li class="start_item photo_pazzle">
+              <div class="start_item-content">
+                <h2 class="start_item-title">Фото пазл</h2>
               </div>
             </li>
-            <li class="game_item imag_pazzle">
-              <div class="choise_item">
-                <h2 class="choise_item-name">Картинка</h2>
+            <li class="start_item imag_pazzle">
+              <div class="start_item-content">
+                <h2 class="start_item-title">Картинка</h2>
               </div>
             </li>
           </ul>
         </div>
       </div>
     </div>
-    <div class="modal_settings">
-      <div class="modal_settings-background"></div>
-      <div class="modal_settings-content setting">
-        <div class="setting_header">
-          <h1 class="setting_title">
+    <div class="settings_menu settings">
+      <div class="settings_background"></div>
+      <div class="settings_content">
+        <div class="settings_header">
+          <h1 class="settings_title">
             Настройки
           </h1>
-          <div class="setting_button-close" onclick="closeSettings()">
-            <div class="imag_close">
-              <img class="img_close" src="img/close.svg" />
+          <div class="settings_close" onclick="closeSettings()">
+            <div class="settings_close-imag">
+              <img class="settings_close-img" src="img/close.svg" />
             </div>
           </div>
         </div>
-        <div class="setting_body">
-          <ul class="setting_list">
-            <li class="setting_item">
-              <p class="setting_name">Музыка</p>
+        <div class="settings_body">
+          <ul class="settings_list">
+            <li class="settings_item">
+              <h2 class="settings_name">Музыка</h2>
               <label for="music">
-                <input type="checkbox" name="music" id="music" class="input_setting" checked>
-                <div class="input_check">
-                  <div class="check_roll"></div>
+                <input type="checkbox" name="music" id="music" class="settings_input" checked>
+                <div class="settings_switch">
+                  <div class="switch"></div>
                 </div>
               </label>
             </li>
-            <li class="setting_item">
-              <p class="setting_name">Звуки</p>
+            <li class="settings_item">
+              <h2 class="settings_name">Звуки</h2>
               <label for="sound">
-                <input type="checkbox" name="sound" id="sound" class=" input_setting" checked>
-                <div class="input_check">
-                  <div class="check_roll"></div>
+                <input type="checkbox" name="sound" id="sound" class=" settings_input" checked>
+                <div class="settings_switch">
+                  <div class="switch"></div>
                 </div>
               </label>
             </li>
-            <li class="setting_item">
-              <p class="setting_name">Время</p>
+            <li class="settings_item">
+              <h2 class="settings_name">Время</h2>
               <label for="time">
-                <input type="checkbox" name="time" id="time" class="input_setting" checked>
-                <div class="input_check">
-                  <div class="check_roll"></div>
+                <input type="checkbox" name="time" id="time" class="settings_input" checked>
+                <div class="settings_switch">
+                  <div class="switch"></div>
                 </div>
               </label>
             </li>
           </ul>
-          <div class="setting_modal-game">
-            <div class="setting_tohome">
-              <div class="setting_imag">
-                <img class="setting_img" src="img/home.svg" />
+          <div class="subsettings_game">
+            <div class="subsettings_return-start">
+              <div class="subsettings_return_imag">
+                <img class="subsettings_return_img" src="img/home.svg" />
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="check_back">
-      <div class="check_back-background"></div>
-      <div class="check_back-content check">
-        <div class="check_header">
-          <h1 class="check_title">
+    <div class="select_back">
+      <div class="select_back-background"></div>
+      <div class="select_back-content back">
+        <div class="select_header">
+          <h1 class="select_title">
             Выбери фон
           </h1>
-          <div class="check_button-prev" onclick="checkBackground()">
-            <div class="imag_arrow">
-              <img class="img_arrow" src="img/arrow.svg" />
+          <div class="select_close" onclick="openMenuBackgroundPazzle()">
+            <div class="select_close-imag">
+              <img class="select_close-img" src="img/arrow.svg" />
             </div>
           </div>
         </div>
-        <div class="check_body">
-          <div class="check_background">
-            <ul class="check_list">
-              <li class="check_item-back back-1">
-                <div class="check_level_item">
-                  <h2 class="check_level_item-name">Без фона</h2>
+        <div class="select_body">
+          <div class="select_content">
+            <ul class="select_list">
+              <li class="select_item-back back-1">
+                <div class="select_item-content">
+                  <h2 class="select_item-name">Без фона</h2>
                 </div>
               </li>
-              <li class="check_item-back back-2">
-                <div class="check_level_item">
+              <li class="select_item-back back-2">
+                <div class="select_item-content">
                 </div>
               </li>
-              <li class="check_item-back back-3">
-                <div class="check_level_item">
+              <li class="select_item-back back-3">
+                <div class="select_item-content">
                 </div>
               </li>
-              <li class="check_item-back back-4">
+              <li class="select_item-back back-4">
                 <div class="check_level_item">
                 </div>
               </li>
@@ -135,40 +135,40 @@
         </div>
       </div>
     </div>
-    <div class="check_sloshnost">
-      <div class="check_sloshnost-background"></div>
-      <div class="check_sloshnost-content check">
-        <div class="check_header">
-          <h1 class="check_title">
+    <div class="select_difficult">
+      <div class="select_difficult-background"></div>
+      <div class="select_difficult-content select">
+        <div class="select_header">
+          <h1 class="select_title">
             Выбери сложность
           </h1>
-          <div class="check_button-prev" onclick="checkSloznosty()">
-            <div class="imag_arrow">
-              <img class="img_arrow" src="img/arrow.svg" />
+          <div class="select_close" onclick="openMenuDifficult()">
+            <div class="select_close-imag">
+              <img class="select_close-img" src="img/arrow.svg" />
             </div>
           </div>
         </div>
-        <div class="check_body">
-          <div class="check_background">
-            <ul class="check_list">
-              <li class="check_item easy">
-                <div class="check_level_item">
-                  <h2 class="check_level_item-name">Легко</h2>
+        <div class="select_body">
+          <div class="select_content">
+            <ul class="select_list">
+              <li class="select_item easy">
+                <div class="select_item-content">
+                  <h2 class="select_item-name">Легко</h2>
                 </div>
               </li>
-              <li class="check_item medium">
-                <div class="check_level_item">
-                  <h2 class="check_level_item-name">Средне</h2>
+              <li class="select_item medium">
+                <div class="select_item-content">
+                  <h2 class="select_item-name">Средне</h2>
                 </div>
               </li>
-              <li class="check_item hard">
-                <div class="check_level_item">
-                  <h2 class="check_level_item-name">Тяжело</h2>
+              <li class="select_item hard">
+                <div class="select_item-content">
+                  <h2 class="select_item-name">Тяжело</h2>
                 </div>
               </li>
-              <li class="check_item insane">
-                <div class="check_level_item">
-                  <h2 class="check_level_item-name">Очень тяжело</h2>
+              <li class="select_item insane">
+                <div class="select_item-content">
+                  <h2 class="select_item-name">Очень тяжело</h2>
                 </div>
               </li>
             </ul>
@@ -177,7 +177,7 @@
       </div>
     </div>
     <canvas id="myCanvas"></canvas>
-    <div class="menu_top">
+    <div class="top_menu">
       <div class="top_imag">
         <img class="top_img" src="img/medal.svg" />
       </div>
@@ -190,8 +190,8 @@
     </div>
   </div>
   <script src="scripts/initial.js"></script>
+  <script src="scripts/game.js"></script>
   <script src="scripts/index.js"></script>
-
 </body>
 
 </html>
