@@ -3,6 +3,7 @@ let CANVAS = null;
 let CONTEXT = null;
 let initailValues = { isMusic: true, isVideo: true, isPazzle: 'video', isSound: true, isTime: true, imag: new Image(), difficult: null, backGround: 'blueviolet' };
 let SIZE = { x: 0, y: 0, width: 0, height: 0, rows: 2, columns: 3 };
+let process = {isGame: false};
 let SCALER = 0.7;
 let PIEZES = [];
 let CORRECT_DISTANCE = 0;
@@ -24,6 +25,7 @@ function main() {
     CONTEXT = CANVAS.getContext('2d');
     UPDATE.src = '/img/update.svg';
     addEventListener();
+    process.isGame = true;
     switch (initailValues.isPazzle) {
         case 'video': {
             let promise = navigator.mediaDevices.getUserMedia({ video: true }); //video: {width:{exact:200}, height:{exact:200}}
@@ -73,7 +75,7 @@ function addButtonForPhoto() {
     let button = document.createElement('button');
     button.innerHTML = 'PHOTO';
     button.classList.add('test');
-    button.addEventListener('click',pressPhoto)
+    button.addEventListener('click',pressPhoto);
     document.querySelector('.contains').append(button);
 }
 function pressPhoto(){
@@ -215,12 +217,13 @@ function getSelectedPiezes(evt) {
 }
 
 function updateCanvas() {
+    console.log(1);
     CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
     CONTEXT.globalAlpha = 0.5;
     CONTEXT.rect(0, 0, CANVAS.width, CANVAS.height);
     CONTEXT.fillStyle = initailValues.backGround;
     CONTEXT.fill();
-    if (initailValues.isVideo)
+    if (initailValues.isVideo && process.isGame)
         CONTEXT.drawImage(VIDEO, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
     CONTEXT.drawImage(initailValues.imag, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
     CONTEXT.globalAlpha = 1;
@@ -228,6 +231,7 @@ function updateCanvas() {
         PIEZES[i].draw(CONTEXT);
     }
     CONTEXT.drawImage(UPDATE, 200, 200, 45, 45);
+    if(process.isGame)
     requestAnimationFrame(updateCanvas);
 }
 function handleResize() {

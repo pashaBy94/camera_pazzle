@@ -12,6 +12,7 @@ const settingModalGame = document.querySelector('.setting_modal-game');
 const inputSetting = document.querySelectorAll('.input_setting');
 const checkBack = document.querySelector('.check_back');
 const back = document.querySelectorAll('.check_item-back');
+const time = document.querySelector('.time');
 
 addEventListenerInitial();
 
@@ -20,7 +21,7 @@ function addEventListenerInitial() {
     for (let i = 0; i < items.length; i++) {
         items[i].addEventListener('click', selectScenari);
     }
-    for(let i = 0; i < checkItems.length; i++){
+    for (let i = 0; i < checkItems.length; i++) {
         checkItems[i].addEventListener('click', startGame);
     }
     for (let i = 0; i < inputSetting.length; i++) {
@@ -40,12 +41,12 @@ function closeSettings() {
     modal.classList.add('close')
     modal.classList.remove('open')
 }
-function selectSlochnostyOpen(ev){
+function selectSlochnostyOpen(ev) {
     let imagBackground = getComputedStyle(ev.target).backgroundImage;
-    if(imagBackground !== 'none'){
+    if (imagBackground !== 'none') {
         let regExp = /(?<=url\(\")/;
         let length = imagBackground.split(regExp)[1].length;
-        let result = imagBackground.split(regExp)[1].split('').splice(0, length-2).join('');
+        let result = imagBackground.split(regExp)[1].split('').splice(0, length - 2).join('');
         choisiImag(result);
     }
     checkBack.classList.remove('open');
@@ -54,9 +55,9 @@ function selectSlochnostyOpen(ev){
 function selectScenari(ev) {
     let classNames = ev.target.classList;
     for (let i = 0; i < classNames.length; i++) {
-        if(classNames[i].split('_')[1] === 'pazzle'){
+        if (classNames[i].split('_')[1] === 'pazzle') {
             initailValues.isPazzle = classNames[i].split('_')[0];
-            if(initailValues.isPazzle == 'imag') initailValues.isVideo = false;
+            if (initailValues.isPazzle == 'imag') initailValues.isVideo = false;
         }
     }
     startMenu.classList.add('close');
@@ -65,15 +66,15 @@ function selectScenari(ev) {
 function choisiImag(str) {
     initailValues.imag.src = str;
 }
-function checkSloznosty(){
+function checkSloznosty() {
     checkBack.classList.add('open');
     viborSlosnosty.classList.remove('open');
 }
-function checkBackground(){
+function checkBackground() {
     startMenu.classList.remove('close');
     checkBack.classList.remove('open');
 }
-function startGame(){
+function startGame() {
     settingModalGame.classList.add('open');
     viborSlosnosty.classList.remove('open');
     menuTop.classList.add('open');
@@ -101,12 +102,23 @@ function startGame(){
     }
     main();
 }
-function installInitalValues(){
+function installInitalValues() {
     initailValues.isSound = soundInput.checked;
     initailValues.isMusic = musicInput.checked;
     initailValues.isTime = timeInput.checked;
+    showTime();
+
 }
-function goToHome(){
+function showTime() {
+    if (!initailValues.isTime)
+        time.classList.add('close');
+    else
+        time.classList.remove('close');
+}
+function goToHome() {
+    if(document.querySelector('button'))
+    document.querySelector('button').remove();
+    process.isGame = false;
     settingModalGame.classList.remove('open');
     promise = null;
     menuTop.classList.remove('open');
@@ -117,6 +129,6 @@ function goToHome(){
     SELECTED_PIEZES = null;
     START_TIME = null;
     END_TIME = null;
-    CORRECT_PIEZES = new Set(); 
+    CORRECT_PIEZES = new Set();
     VIDEO = null;
 }
