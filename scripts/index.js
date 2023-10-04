@@ -17,9 +17,11 @@ let PAZZLE_AUDIO = new Audio('/sound/pazzle.mp3');
 let MUSIC = new Audio('/sound/music.mp3');
 MUSIC.loop = true;
 let UPDATE = new Image();
+
 function setDefaultSettings(){
     process.isGame = false;
     initailValues.isVideo = true;
+    initailValues.imag = new Image();
     promise = null;
     PIEZES.length = 0;
     CURRENT_PIEZED_INDEX = null;

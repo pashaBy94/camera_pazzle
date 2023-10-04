@@ -11,7 +11,6 @@ const settingsMenu = document.querySelector('.settings_menu');
 const settingModalGame = document.querySelector('.subsettings_game');
 const inputSetting = document.querySelectorAll('.settings_input');
 const checkBack = document.querySelector('.select_back');
-const back = document.querySelectorAll('.select_item-back');
 const time = document.querySelector('.time');
 
 addEventListenerInitial();
@@ -26,9 +25,9 @@ function addEventListenerInitial() {
     for (let i = 0; i < inputSetting.length; i++) {
         inputSetting[i].addEventListener('change', installInitalValues);
     }
-    for (let i = 0; i < back.length; i++) {
-        back[i].addEventListener('click', selectSlochnostyOpen);
-    }
+    // for (let i = 0; i < back.length; i++) {
+    //     back[i].addEventListener('click', selectSlochnostyOpen);
+    // }
 }
 
 function openSettings() {
@@ -41,13 +40,14 @@ function closeSettings() {
     settingsMenu.classList.remove('open')
 }
 function selectSlochnostyOpen(ev) {
-    let imagBackground = getComputedStyle(ev.target).backgroundImage;
-    if (imagBackground !== 'none') {
-        let regExp = /(?<=url\(\")/;
-        let length = imagBackground.split(regExp)[1].length;
-        let result = imagBackground.split(regExp)[1].split('').splice(0, length - 2).join('');
-        choisiImag(result);
-    }
+    // let imagBackground = getComputedStyle(ev.target).backgroundImage;
+    // console.log(ev.target.dataset.url);
+    // if (imagBackground !== 'none') {
+    //     let regExp = /(?<=url\(\")/;
+    //     let length = imagBackground.split(regExp)[1].length;
+    //     let result = imagBackground.split(regExp)[1].split('').splice(0, length - 2).join('');
+    // }
+    choisiImag(ev.target.dataset.url);
     checkBack.classList.remove('open');
     viborSlosnosty.classList.add('open');
 }
@@ -59,10 +59,12 @@ function selectScenari(ev) {
             if (initailValues.isPazzle == 'imag') initailValues.isVideo = false;
         }
     }
+    writeMenuBackgroundPazzle(arrPhoneImage);
     startMenu.classList.add('close');
     checkBack.classList.add('open');
 }
 function choisiImag(str) {
+    if(str != null)
     initailValues.imag.src = str;
 }
 function openMenuDifficult() {
@@ -72,6 +74,38 @@ function openMenuDifficult() {
 function openMenuBackgroundPazzle() {
     startMenu.classList.remove('close');
     checkBack.classList.remove('open');
+}
+let arrPhoneImage = [null,
+    { small: '/img/smallFone/batterflies-small.png', big: '/img/bigFone/batterflies-big.png' },
+    { small: '/img/smallFone/cloud-small.png', big: '/img/bigFone/cloud-big.png' },
+    { small: '/img/smallFone/eralash-small.png', big: '/img/bigFone/eralash-big.png' },
+    { small: '/img/smallFone/happe-small.png', big: '/img/bigFone/happe-big.png' },
+    { small: '/img/smallFone/leaves-small.png', big: '/img/bigFone/leaves-big.png' },
+    { small: '/img/smallFone/miki-small.png', big: '/img/bigFone/miki-big.png' },
+    { small: '/img/smallFone/rabbit-small.png', big: '/img/bigFone/rabbit-big.png' },
+    { small: '/img/smallFone/sailor-small.png', big: '/img/bigFone/sailor-big.png' },
+];
+function writeMenuBackgroundPazzle(arrImag) {
+    let selectList = document.querySelector('.select_list');
+    for (let i = 0; i < arrImag.length; i++) {
+        let li = document.createElement('li');
+        li.classList.add('select_item-back');
+        if (arrImag[i] !== null){
+            li.style.backgroundImage = `url(${arrImag[i].small})`;
+            li.setAttribute('data-url', arrImag[i].big)
+        } else {
+            li.setAttribute('data-url', 'null')
+        }
+        // let div = document.createElement('div');
+        // div.classList.add('select_item-content');
+        // li.append(div);
+        selectList.append(li);
+    }
+    const back = document.querySelectorAll('.select_item-back');
+    for (let i = 0; i < back.length; i++) {
+        back[i].addEventListener('click', selectSlochnostyOpen);
+    }
+
 }
 function startGame() {
     settingModalGame.classList.add('open');
@@ -105,7 +139,6 @@ function installInitalValues() {
     initailValues.isSound = soundInput.checked;
     initailValues.isMusic = musicInput.checked;
     initailValues.isTime = timeInput.checked;
-    // stopMusic(MUSIC);
     playMusic(MUSIC);
     showTime();
 
@@ -117,8 +150,8 @@ function showTime() {
         time.classList.remove('close');
 }
 function goToHome() {
-    if(document.querySelector('button'))
-    document.querySelector('button').remove();
+    if (document.querySelector('button'))
+        document.querySelector('button').remove();
     settingModalGame.classList.remove('open');
     menuTop.classList.remove('open');
     startMenu.classList.remove('close');
