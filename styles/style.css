@@ -173,6 +173,38 @@ body {
     height: 100%;
 }
 
+.subsettings_color > div{
+    width: 4rem;
+    height: 4rem;
+    border: 5px solid white;
+    border-radius: 15px;
+    box-shadow: 1px 1px 2px 1px rgb(32, 30, 68);
+    display: inline-block;
+}
+.color0{
+    background-color: blueviolet;
+}
+.color1{
+    background: linear-gradient(45deg, #822be6, #c71d7d);
+
+}
+.color2{
+    background: linear-gradient(45deg, #fc78a3, #d0f180, #9c6ffb);
+
+}
+.color3{
+    background: linear-gradient(45deg, #b3c9c4, #9c6ffb);
+
+}
+.color4{
+    background: linear-gradient(45deg, #655b97, #ed554b);
+
+}
+.color5{
+    background: linear-gradient(45deg, #fa69e9, #7ae777, #9c6ffb);
+
+}
+
 .start_body,
 .difficult_content {
     position: relative;
@@ -233,10 +265,16 @@ body {
     margin: 5px;
 }
 
-.start_item {
-    background-image: url('/img/belosnegka.png');
-}
 
+.video_pazzle{
+    background-image: url('/img/videoGame.png');
+}
+.photo_pazzle{
+    background-image: url('/img/photoGame.png');
+}
+.imag_pazzle{
+    background-image: url('/img/imagGame.png');
+}
 .start_item:hover,
 .select_item:hover {
     opacity: 0.8;
@@ -270,6 +308,8 @@ body {
 
 .subsettings_game {
     display: none;
+    flex-direction: column;
+    align-items: center;
 }
 
 .settings_background {
@@ -431,22 +471,6 @@ body {
 
 .select_item-back {
     border: .3rem solid rgb(212, 248, 255);
-}
-
-.back-1 {
-    background-color: rgba(0, 0, 0, 0.26);
-}
-
-.back-2 {
-    background-image: url('/img/belosnegka.png');
-}
-
-.back-3 {
-    background-image: url('/img/aist.png');
-}
-
-.back-4 {
-    background-image: url('/img/gusy.png');
 }
 
 .open {

@@ -12,6 +12,9 @@ const settingModalGame = document.querySelector('.subsettings_game');
 const inputSetting = document.querySelectorAll('.settings_input');
 const checkBack = document.querySelector('.select_back');
 const time = document.querySelector('.time');
+const colors = document.querySelectorAll('.color');
+
+let arrColors = [['blueviolet'], ['#822be6', '#c71d7d'], ['#fc78a3', "#d0f180", "#822be6"], ['#b3c9c4', '#9c6ffb'], ['#655b97', '#ed554b'], ['#fa69e9', '#7ae777', '#9c6ffb']];
 
 addEventListenerInitial();
 function addEventListenerInitial() {
@@ -25,9 +28,9 @@ function addEventListenerInitial() {
     for (let i = 0; i < inputSetting.length; i++) {
         inputSetting[i].addEventListener('change', installInitalValues);
     }
-    // for (let i = 0; i < back.length; i++) {
-    //     back[i].addEventListener('click', selectSlochnostyOpen);
-    // }
+    for (let i = 0; i < colors.length; i++) {
+        colors[i].addEventListener('click', () => initailValues.backGround = i);
+    }
 }
 
 function openSettings() {
@@ -40,13 +43,7 @@ function closeSettings() {
     settingsMenu.classList.remove('open')
 }
 function selectSlochnostyOpen(ev) {
-    // let imagBackground = getComputedStyle(ev.target).backgroundImage;
-    // console.log(ev.target.dataset.url);
-    // if (imagBackground !== 'none') {
-    //     let regExp = /(?<=url\(\")/;
-    //     let length = imagBackground.split(regExp)[1].length;
-    //     let result = imagBackground.split(regExp)[1].split('').splice(0, length - 2).join('');
-    // }
+    // initailValues.imagUrl = ev.target.dataset.url;
     choisiImag(ev.target.dataset.url);
     checkBack.classList.remove('open');
     viborSlosnosty.classList.add('open');
@@ -56,16 +53,20 @@ function selectScenari(ev) {
     for (let i = 0; i < classNames.length; i++) {
         if (classNames[i].split('_')[1] === 'pazzle') {
             initailValues.isPazzle = classNames[i].split('_')[0];
-            if (initailValues.isPazzle == 'imag') initailValues.isVideo = false;
         }
     }
-    writeMenuBackgroundPazzle(arrPhoneImage);
+    if (initailValues.isPazzle == 'imag') {
+        initailValues.isVideo = false;
+        writeMenuSelectPazzle(arrPictures);
+    } else {
+        writeMenuSelectPazzle(arrPhoneImage);
+    }
     startMenu.classList.add('close');
     checkBack.classList.add('open');
 }
 function choisiImag(str) {
-    if(str != null)
-    initailValues.imag.src = str;
+    if (str != null)
+        initailValues.imag.src = str;
 }
 function openMenuDifficult() {
     checkBack.classList.add('open');
@@ -85,24 +86,34 @@ let arrPhoneImage = [null,
     { small: '/img/smallFone/rabbit-small.png', big: '/img/bigFone/rabbit-big.png' },
     { small: '/img/smallFone/sailor-small.png', big: '/img/bigFone/sailor-big.png' },
 ];
-function writeMenuBackgroundPazzle(arrImag) {
+let arrPictures = [
+    { small: '/img/pictures/malchik-small.jpg', big: '/img/pictures/malchik-big.jpg' },
+    { small: '/img/pictures/maugli-small.jpg', big: '/img/pictures/maugli-big.jpg' },
+    { small: '/img/pictures/minony-small.jpg', big: '/img/pictures/minony-big.jpg' },
+    { small: '/img/pictures/panda-small.jpg', big: '/img/pictures/panda-big.jpg' },
+    { small: '/img/pictures/panteryi-small.jpg', big: '/img/pictures/panteryi-big.jpg' },
+    { small: '/img/pictures/rusalochka-small.jpg', big: '/img/pictures/rusalochka-big.jpg' },
+    { small: '/img/pictures/zveropolis-small.jpg', big: '/img/pictures/zveropolis-big.jpg' },
+    { small: '/img/pictures/zveropolis-small.jpg', big: '/img/cats.jpg' },
+
+];
+function writeMenuSelectPazzle(arrImag) {
     let selectList = document.querySelector('.select_list');
+    selectList.innerHTML = '';
     for (let i = 0; i < arrImag.length; i++) {
         let li = document.createElement('li');
         li.classList.add('select_item-back');
-        if (arrImag[i] !== null){
+        if (arrImag[i] !== null) {
             li.style.backgroundImage = `url(${arrImag[i].small})`;
             li.setAttribute('data-url', arrImag[i].big)
-        } else {
-            li.setAttribute('data-url', 'null')
         }
-        // let div = document.createElement('div');
-        // div.classList.add('select_item-content');
-        // li.append(div);
         selectList.append(li);
     }
     const back = document.querySelectorAll('.select_item-back');
     for (let i = 0; i < back.length; i++) {
+        // back[i].addEventListener('click', (ev)=>{
+        //     paintLoader(initailValues.imag, selectSlochnostyOpen, ev)
+        // });
         back[i].addEventListener('click', selectSlochnostyOpen);
     }
 
@@ -133,6 +144,8 @@ function startGame() {
             break;
         }
     }
+        // choisiImag(initailValues.imagUrl);
+
     main();
 }
 function installInitalValues() {
@@ -158,3 +171,23 @@ function goToHome() {
     settingsMenu.classList.add('close');
     setDefaultSettings();
 }
+// function paintLoader(img, func, event){
+//     choisiImag(event.target.dataset.url);
+//     CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
+//     paintBackgound(initailValues.backGround);
+//     CONTEXT.clearRect(SIZE.x, SIZE.y, SIZE.width, SIZE.height);
+//     CONTEXT.globalAlpha = 0.3;
+//     // if (initailValues.isVideo && process.isGame)
+//     //     CONTEXT.drawImage(VIDEO, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
+//     // CONTEXT.drawImage(initailValues.imag, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
+//     CONTEXT.globalAlpha = 1;
+//     for (let i = 0; i < PIEZES.length; i++) {
+//         PIEZES[i].draw(CONTEXT);
+//     }
+//     CONTEXT.drawImage(UPDATE, 200, 200, 45, 45);
+//     // if (process.isGame)
+//     //     requestAnimationFrame(updateCanvas);
+//     img.onload = ()=>{
+//         // func(event);
+//     }
+// }

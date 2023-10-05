@@ -11,6 +11,7 @@ class Piece {
     }
     draw(context) {
         context.beginPath();
+        context.strokeStyle = "rgba(0,0,0,.2)";
         let sz = Math.min(this.width, this.height);
         let nes = 0.05 * sz;
         let tabWidth = sz * 0.3;
@@ -132,22 +133,121 @@ class Piece {
         context.stroke();
 
     }
-    drawPaintLine(context) {
-
+    drawColor(context) {
+        context.beginPath();
+        context.strokeStyle = "rgba(0,0,0,1)";
+        context.fillStyle = getColor();
+        let sz = Math.min(this.width, this.height);
+        let nes = 0.05 * sz;
+        let tabWidth = sz * 0.3;
+        let tabHeight = sz * 0.3;
         context.moveTo(this.x, this.y);
         //top
-        context.lineTo(this.x + this.width * Math.abs(this.top), this.y - tabHeight * Math.sign(this.top));
+        if (this.top) {
+            context.lineTo(this.x + this.width * Math.abs(this.top) - nes, this.y);
+            context.bezierCurveTo(
+                this.x + this.width * Math.abs(this.top) - nes,
+                this.y - tabHeight * Math.sign(this.top) * 0.2,
+                this.x + this.width * Math.abs(this.top) - tabWidth,
+                this.y - tabHeight * Math.sign(this.top),
+                this.x + this.width * Math.abs(this.top),
+                this.y - tabHeight * Math.sign(this.top)
+            );
+            context.bezierCurveTo(
+                this.x + this.width * Math.abs(this.top) + tabWidth,
+                this.y - tabHeight * Math.sign(this.top),
+                this.x + this.width * Math.abs(this.top) + nes,
+                this.y - tabHeight * Math.sign(this.top) * 0.2,
+                this.x + this.width * Math.abs(this.top) + nes,
+                this.y
+            );
+        }
         context.lineTo(this.x + this.width, this.y);
         //right
-        context.lineTo(this.x + this.width - tabHeight * Math.sign(this.right), this.y + this.height * Math.abs(this.right));
+        if (this.right) {
+            context.lineTo(this.x + this.width, this.y + this.height * Math.abs(this.right) - nes);
+            context.bezierCurveTo(
+                this.x + this.width - tabHeight * Math.sign(this.right) * 0.2,
+                this.y + this.height * Math.abs(this.right) - nes,
+                this.x + this.width - tabHeight * Math.sign(this.right),
+                this.y + this.height * Math.abs(this.right) - tabWidth,
+                this.x + this.width - tabHeight * Math.sign(this.right),
+                this.y + this.height * Math.abs(this.right),
+            );
+            context.bezierCurveTo(
+                this.x + this.width - tabHeight * Math.sign(this.right),
+                this.y + this.height * Math.abs(this.right) + tabWidth,
+                this.x + this.width - tabHeight * Math.sign(this.right) * 0.2,
+                this.y + this.height * Math.abs(this.right) + nes,
+                this.x + this.width,
+                this.y + this.height * Math.abs(this.right) + nes,
+            );
+        }
         context.lineTo(this.x + this.width, this.y + this.height);
         //bottom
-        context.lineTo(this.x + this.width * Math.abs(this.bottom), this.y + this.height + tabHeight * Math.sign(this.bottom));
+        if (this.bottom) {
+            context.lineTo(this.x + this.width * Math.abs(this.bottom) + nes, this.y + this.height);
+            context.bezierCurveTo(
+                this.x + this.width * Math.abs(this.bottom) + nes,
+                this.y + this.height + tabHeight * Math.sign(this.bottom) * 0.2,
+                this.x + this.width * Math.abs(this.bottom) + tabWidth,
+                this.y + this.height + tabHeight * Math.sign(this.bottom),
+                this.x + this.width * Math.abs(this.bottom),
+                this.y + this.height + tabHeight * Math.sign(this.bottom)
+            );
+            context.bezierCurveTo(
+                this.x + this.width * Math.abs(this.bottom) - tabWidth,
+                this.y + this.height + tabHeight * Math.sign(this.bottom),
+                this.x + this.width * Math.abs(this.bottom) - nes,
+                this.y + this.height + tabHeight * Math.sign(this.bottom) * 0.2,
+                this.x + this.width * Math.abs(this.bottom) - nes,
+                this.y + this.height
+            );
+        }
         context.lineTo(this.x, this.y + this.height);
         // left
-        context.lineTo(this.x + tabHeight * Math.sign(this.left), this.y + this.height * Math.abs(this.left));
+        if (this.left) {
+            context.lineTo(this.x, this.y + this.height * Math.abs(this.left) + nes);
+            context.bezierCurveTo(
+                this.x + tabHeight * Math.sign(this.left) * 0.2,
+                this.y + this.height * Math.abs(this.left) + nes,
+                this.x + tabHeight * Math.sign(this.left),
+                this.y + this.height * Math.abs(this.left) + tabWidth,
+                this.x + tabHeight * Math.sign(this.left),
+                this.y + this.height * Math.abs(this.left),
+            );
+            context.bezierCurveTo(
+                this.x + tabHeight * Math.sign(this.left),
+                this.y + this.height * Math.abs(this.left) - tabWidth,
+                this.x + tabHeight * Math.sign(this.left) * 0.2,
+                this.y + this.height * Math.abs(this.left) - nes,
+                this.x,
+                this.y + this.height * Math.abs(this.left) - nes,
+            );
+        }
         context.lineTo(this.x, this.y);
+        context.save();
+        context.restore();
+        context.fill();
     }
+
+
+    // drawPaintLine(context) {
+
+    //     context.moveTo(this.x, this.y);
+    //     //top
+    //     context.lineTo(this.x + this.width * Math.abs(this.top), this.y - tabHeight * Math.sign(this.top));
+    //     context.lineTo(this.x + this.width, this.y);
+    //     //right
+    //     context.lineTo(this.x + this.width - tabHeight * Math.sign(this.right), this.y + this.height * Math.abs(this.right));
+    //     context.lineTo(this.x + this.width, this.y + this.height);
+    //     //bottom
+    //     context.lineTo(this.x + this.width * Math.abs(this.bottom), this.y + this.height + tabHeight * Math.sign(this.bottom));
+    //     context.lineTo(this.x, this.y + this.height);
+    //     // left
+    //     context.lineTo(this.x + tabHeight * Math.sign(this.left), this.y + this.height * Math.abs(this.left));
+    //     context.lineTo(this.x, this.y);
+    // }
     drawPaintRadial(context) {
         context.moveTo(this.x, this.y);
         //top
@@ -249,4 +349,18 @@ class Piece {
         playSound(BELL_AUDIO);
         CORRECT_PIEZES.add(`${this.x}, ${this.y}`);
     }
+}
+function randomizePiezes() {
+    let y, x;
+    for (let i = 0; i < PIEZES.length; i++) {
+        if (!CORRECT_PIEZES.has(`${PIEZES[i].x}, ${PIEZES[i].y}`)) {
+            x = Math.random() * (CANVAS.width - PIEZES[i].width);
+            if (x > SIZE.x && x < (SIZE.x + SIZE.width / 2)) x = SIZE.x - PIEZES[i].width;
+            if (x < (SIZE.x + SIZE.width) && x > (SIZE.x + SIZE.width / 2)) x = SIZE.x + SIZE.width;
+            PIEZES[i].x = x;
+            y = Math.random() * (CANVAS.height - PIEZES[i].height);
+            PIEZES[i].y = (y < 70) ? 70 : y;
+        }
+    }
+    playSound(PAZZLE_AUDIO);
 }

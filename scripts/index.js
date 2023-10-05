@@ -1,11 +1,12 @@
 let VIDEO = null;
 let CANVAS = null;
 let CONTEXT = null;
-let initailValues = { isMusic: true, isVideo: true, isPazzle: 'video', isSound: true, isTime: true, imag: new Image(), difficult: null, backGround: 'blueviolet' };
+let initailValues = { isMusic: true, isVideo: true, isPazzle: 'video', isSound: true, isTime: true, imagUrl: null, imag: new Image(), difficult: null, backGround: 0 };
 let SIZE = { x: 0, y: 0, width: 0, height: 0, rows: 2, columns: 3 };
 let process = { isGame: false };
 let SCALER = 0.7;
 let PIEZES = [];
+let VARIABLE_END = 40;
 let CORRECT_DISTANCE = 0;
 let CURRENT_PIEZED_INDEX = null;
 let SELECTED_PIEZES = null;
@@ -18,8 +19,9 @@ let MUSIC = new Audio('/sound/music.mp3');
 MUSIC.loop = true;
 let UPDATE = new Image();
 
-function setDefaultSettings(){
+function setDefaultSettings() {
     process.isGame = false;
+    VARIABLE_END = 40;
     initailValues.isVideo = true;
     initailValues.imag = new Image();
     promise = null;
@@ -38,10 +40,19 @@ function playSound(audio) {
 function playMusic(audio) {
     if (initailValues.isMusic) audio.play();
     else audio.pause();
-
 }
-function stopMusic(audio) {
-    if (!initailValues.isMusic) audio.pause();
+function getColor(){
+    return `rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`
+}
+function loader() {
+    handleResize();
+    initialPieze();
+    paintBackgound(initailValues.backGround);
+    for (let i = 0; i < PIEZES.length; i++) {
+        setTimeout(() => {
+            PIEZES[i].drawColor(CONTEXT);
+        }, i * 100);
+    }
 }
 function main() {
     playMusic(MUSIC);
@@ -49,52 +60,57 @@ function main() {
     CANVAS = document.getElementById('myCanvas');
     CONTEXT = CANVAS.getContext('2d');
     UPDATE.src = '/img/update.svg';
-    addEventListener();
-    process.isGame = true;
-    switch (initailValues.isPazzle) {
-        case 'video': {
-            let promise = navigator.mediaDevices.getUserMedia({ video: true }); //video: {width:{exact:200}, height:{exact:200}}
-            promise.then(signal => {
-                VIDEO = document.createElement('video');
-                VIDEO.srcObject = signal;
-                VIDEO.play();
-                VIDEO.onloadeddata = () => {
-                    handleResize();
-                    window.addEventListener('resize', handleResize);
-                    initialPieze();
-                    randomizePiezes();
-                    updateCanvas();
-                }
-            }).catch(err => alert('camera error:' + err))
-            break;
+    // loader();
+    // initailValues.imag.onload = () => {
+        addEventListener();
+        process.isGame = true;
+        switch (initailValues.isPazzle) {
+            case 'video': {
+                let promise = navigator.mediaDevices.getUserMedia({ video: true }); //video: {width:{exact:200}, height:{exact:200}}
+                promise.then(signal => {
+                    VIDEO = document.createElement('video');
+                    VIDEO.srcObject = signal;
+                    VIDEO.play();
+                    VIDEO.onloadeddata = () => {
+                        handleResize();
+                        window.addEventListener('resize', handleResize);
+                        initialPieze();
+                        randomizePiezes();
+                        updateCanvas();
+                        console.log(SIZE.x);
+                    }
+                }).catch(err => alert('camera error:' + err))
+                break;
+            }
+            case 'photo': {
+                addButtonForPhoto();
+                let promise = navigator.mediaDevices.getUserMedia({ video: true }); //video: {width:{exact:200}, height:{exact:200}}
+                promise.then(signal => {
+                    VIDEO = document.createElement('video');
+                    VIDEO.srcObject = signal;
+                    VIDEO.play();
+                    VIDEO.onloadeddata = () => {
+                        handleResize();
+                        window.addEventListener('resize', handleResize);
+                        initialPieze();
+                        updateCanvas();
+                    }
+                }).catch(err => alert('camera error:' + err))
+                break;
+            }
+            case 'imag': {
+                handleResize();
+                window.addEventListener('resize', handleResize);
+                initialPieze();
+                randomizePiezes();
+                updateCanvas();
+                break;
+            }
+            default:
+                break;
         }
-        case 'photo': {
-            addButtonForPhoto();
-            let promise = navigator.mediaDevices.getUserMedia({ video: true }); //video: {width:{exact:200}, height:{exact:200}}
-            promise.then(signal => {
-                VIDEO = document.createElement('video');
-                VIDEO.srcObject = signal;
-                VIDEO.play();
-                VIDEO.onloadeddata = () => {
-                    handleResize();
-                    window.addEventListener('resize', handleResize);
-                    initialPieze();
-                    updateCanvas();
-                }
-            }).catch(err => alert('camera error:' + err))
-            break;
-        }
-        case 'imag': {
-            handleResize();
-            window.addEventListener('resize', handleResize);
-            initialPieze();
-            randomizePiezes();
-            updateCanvas();
-            break;
-        }
-        default:
-            break;
-    }
+    // }
+
 }
 function addButtonForPhoto() {
     let button = document.createElement('button');
@@ -111,8 +127,8 @@ function pressPhoto() {
 function setDifficult() {
     switch (initailValues.difficult) {
         case 'easy': {
-            SIZE.rows = 3;
-            SIZE.columns = 3;
+            SIZE.rows = 2;
+            SIZE.columns = 2;
             break;
         };
         case 'medium': {
@@ -206,10 +222,36 @@ function isComplete() {
     return false
 }
 function comletedPiezes() {
+    CANVAS.removeEventListener('mousedown', onMouseDown);
+    CANVAS.removeEventListener('touchstart', onTouchStart);
+    console.log('end');
     stopedTime();
+    endGame();
 }
 
-function onMouseUp(ev) {
+function endGame() {
+    VARIABLE_END--;
+    process.isGame = false;
+    CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
+    paintBackgound(initailValues.backGround);
+    CONTEXT.clearRect(SIZE.x--, SIZE.y--, SIZE.width += 2, SIZE.height += 2);
+    if (initailValues.isVideo && VIDEO != null)
+        CONTEXT.drawImage(VIDEO, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
+    CONTEXT.drawImage(initailValues.imag, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
+    if (VARIABLE_END > 0) {
+        requestAnimationFrame(endGame);
+    } else {
+        CANVAS.addEventListener('mousedown', toStart);
+        CANVAS.addEventListener('touchstart', toStart);
+    }
+}
+function toStart() {
+    goToHome();
+    CANVAS.removeEventListener('mousedown', toStart);
+    CANVAS.removeEventListener('touchstart', toStart);
+}
+
+function onMouseUp() {
     if (SELECTED_PIEZES) {
         if (SELECTED_PIEZES.isClose()) {
             SELECTED_PIEZES.snap();
@@ -238,14 +280,30 @@ function getSelectedPiezes(evt) {
     }
     return null
 }
+function paintBackgound(i) {
+    const gradient = CONTEXT.createConicGradient(0, CANVAS.width / 2, CANVAS.height / 2);
+    if (i) {
+        for (let j = 0; j < arrColors[i].length; j++) {
+            if (j == 0) {
+                gradient.addColorStop(0, arrColors[i][j]);
+                gradient.addColorStop(1, arrColors[i][j]);
+            } else {
+                gradient.addColorStop((1 / (arrColors[i].length)) * j, arrColors[i][j]);
+            }
+        }
+    } else {
+        gradient.addColorStop(0, 'blueviolet');
+    }
+    CONTEXT.fillStyle = gradient;
+    CONTEXT.rect(0, 0, CANVAS.width, CANVAS.height);
+    CONTEXT.fill();
+}
 
 function updateCanvas() {
-    console.log(initailValues.isVideo, VIDEO);
     CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
-    CONTEXT.globalAlpha = 0.5;
-    CONTEXT.rect(0, 0, CANVAS.width, CANVAS.height);
-    CONTEXT.fillStyle = initailValues.backGround;
-    CONTEXT.fill();
+    paintBackgound(initailValues.backGround);
+    CONTEXT.clearRect(SIZE.x, SIZE.y, SIZE.width, SIZE.height);
+    CONTEXT.globalAlpha = 0.3;
     if (initailValues.isVideo && process.isGame)
         CONTEXT.drawImage(VIDEO, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
     CONTEXT.drawImage(initailValues.imag, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
@@ -257,6 +315,7 @@ function updateCanvas() {
     if (process.isGame)
         requestAnimationFrame(updateCanvas);
 }
+
 function handleResize() {
     CANVAS.width = window.innerWidth;
     CANVAS.height = window.innerHeight;
@@ -318,16 +377,4 @@ function initialPieze() {
         }
     }
     startedTime();
-}
-
-function randomizePiezes() {
-    let y;
-    for (let i = 0; i < PIEZES.length; i++) {
-        if (!CORRECT_PIEZES.has(`${PIEZES[i].x}, ${PIEZES[i].y}`)) {
-            PIEZES[i].x = Math.random() * (CANVAS.width - PIEZES[i].width);
-            y = Math.random() * (CANVAS.height - PIEZES[i].height);
-            PIEZES[i].y = (y < 70) ? 70 : y;
-        }
-    }
-    playSound(PAZZLE_AUDIO);
 }
