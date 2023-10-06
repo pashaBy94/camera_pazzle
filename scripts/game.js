@@ -351,6 +351,7 @@ class Piece {
     }
 }
 function randomizePiezes() {
+    startedTime();
     let y, x;
     for (let i = 0; i < PIEZES.length; i++) {
         if (!CORRECT_PIEZES.has(`${PIEZES[i].x}, ${PIEZES[i].y}`)) {
