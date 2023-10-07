@@ -33,7 +33,6 @@ function setDefaultSettings() {
     CORRECT_PIEZES = new Set();
     VIDEO = null;
 }
-
 function playSound(audio) {
     if (initailValues.isSound) audio.play();
 }
@@ -82,6 +81,7 @@ function main() {
                     VIDEO.srcObject = signal;
                     VIDEO.play();
                     VIDEO.onloadeddata = () => {
+                        openMenuTop();
                         handleResize();
                         window.addEventListener('resize', handleResize);
                         initialPieze();
@@ -92,15 +92,17 @@ function main() {
                 break;
             }
             case 'photo': {
-                addButtonForPhoto();
                 let promise = navigator.mediaDevices.getUserMedia({ video: true }); //video: {width:{exact:200}, height:{exact:200}}
                 promise.then(signal => {
                     VIDEO = document.createElement('video');
                     VIDEO.srcObject = signal;
                     VIDEO.play();
                     VIDEO.onloadeddata = () => {
+                        addButtonForPhoto();
+                        openMenuTop();
                         handleResize();
                         window.addEventListener('resize', handleResize);
+                        // document.querySelector().addEventListener('resize', handleResize);
                         initialPieze();
                         updateCanvas();
                     }
@@ -108,6 +110,7 @@ function main() {
                 break;
             }
             case 'imag': {
+                openMenuTop();
                 handleResize();
                 window.addEventListener('resize', handleResize);
                 initialPieze();
@@ -187,9 +190,8 @@ function addEventListener() {
     CANVAS.addEventListener('mouseup', onMouseUp);
     CANVAS.addEventListener('touchend', onTouchEnd);
 }
-
 function onMouseDown(ev) {
-    if (ev.x > (SIZE.x + SIZE.width*1.05) && ev.x < (SIZE.x + SIZE.width*1.05 + SIZE.width*0.1) && ev.y > SIZE.y && ev.y < (SIZE.y + SIZE.width*0.1)) randomizePiezes() ////test -------------------------
+    if (ev.x > CANVAS.width*0.9 && ev.x < CANVAS.width*0.97 && ev.y > SIZE.y && ev.y < (SIZE.y + CANVAS.width*0.07)) randomizePiezes() ////test -------------------------
     SELECTED_PIEZES = getSelectedPiezes(ev);
     if (SELECTED_PIEZES !== null && SELECTED_PIEZES.correct === false) {
         CANVAS.addEventListener('mousemove', onMouseMove);
@@ -202,34 +204,12 @@ function onMouseDown(ev) {
     }
 }
 function onTouchStart(event) {
-    console.log('touch');
     let coord = { x: event.touches[0].clientX, y: event.touches[0].clientY };
     onMouseDown(coord);
     if (SELECTED_PIEZES) {
         CANVAS.addEventListener('touchmove', onTouchMove);
     }
 }
-
-// function onTouchStart(event) {
-//     console.log('touch');
-//     let coord = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-//         SELECTED_PIEZES = getSelectedPiezes(event);
-
-//     // onMouseDown(coord);
-//     if (SELECTED_PIEZES !== null && SELECTED_PIEZES.correct === false) {
-//         CANVAS.addEventListener('touchmove', onTouchMove);
-//         PIEZES.splice(CURRENT_PIEZED_INDEX, 1);
-//         PIEZES.push(SELECTED_PIEZES);
-//         SELECTED_PIEZES.offset = {
-//             x: coord.x - SELECTED_PIEZES.x,
-//             y: coord.y - SELECTED_PIEZES.y
-//         }
-//     }
-//     // if (SELECTED_PIEZES) {
-//     //     CANVAS.addEventListener('touchmove', onTouchMove);
-//     // }
-// }
-
 
 function onMouseMove(ev) {
     if (SELECTED_PIEZES !== null) {
@@ -336,7 +316,7 @@ function updateCanvas() {
     for (let i = 0; i < PIEZES.length; i++) {
         PIEZES[i].draw(CONTEXT);
     }
-    CONTEXT.drawImage(UPDATE, SIZE.x + SIZE.width*1.05, SIZE.y, SIZE.width*0.1, SIZE.width*0.1);
+    CONTEXT.drawImage(UPDATE, CANVAS.width*0.9, SIZE.y, CANVAS.width*0.07, CANVAS.width*0.07);
     if (process.isGame)
         requestAnimationFrame(updateCanvas);
 }

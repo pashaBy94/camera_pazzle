@@ -13,12 +13,17 @@ const inputSetting = document.querySelectorAll('.settings_input');
 const checkBack = document.querySelector('.select_back');
 const time = document.querySelector('.time');
 const colors = document.querySelectorAll('.color');
+const selectListPrev = document.querySelector('.select_list-prev');
+const selectListNext = document.querySelector('.select_list-next');
 
+let CURRENT_PAGE_PAZZLE = 0;
 let arrColors = [['blueviolet'], ['#822be6', '#c71d7d'], ['#fc78a3', "#d0f180", "#822be6"], ['#b3c9c4', '#9c6ffb'], ['#655b97', '#ed554b'], ['#fa69e9', '#7ae777', '#9c6ffb']];
 
 addEventListenerInitial();
 function addEventListenerInitial() {
     settingTohome.addEventListener('click', goToHome);
+    selectListNext.addEventListener('click', getNextPage);
+    selectListPrev.addEventListener('click', getPrevPage);
     for (let i = 0; i < items.length; i++) {
         items[i].addEventListener('click', selectScenari);
     }
@@ -44,7 +49,6 @@ function closeSettings() {
 }
 function selectSlochnostyOpen(ev) {
     initailValues.imagUrl = ev.target.dataset.url;
-    // choisiImag(ev.target.dataset.url);
     checkBack.classList.remove('open');
     viborSlosnosty.classList.add('open');
 }
@@ -55,12 +59,7 @@ function selectScenari(ev) {
             initailValues.isPazzle = classNames[i].split('_')[0];
         }
     }
-    if (initailValues.isPazzle == 'imag') {
-        initailValues.isVideo = false;
-        writeMenuSelectPazzle(arrPictures);
-    } else {
-        writeMenuSelectPazzle(arrPhoneImage);
-    }
+    writeMenuSelectPazzle()
     startMenu.classList.add('close');
     checkBack.classList.add('open');
 }
@@ -114,6 +113,10 @@ let arrPhoneImage = [
 let arrPictures = [
     { small: '/img/pictures/malchik-small.jpg', big: '/img/pictures/malchik-big.jpg' },
     { small: '/img/pictures/maugli-small.jpg', big: '/img/pictures/maugli-big.jpg' },
+    { small: '/img/pictures/malchik-small.jpg', big: '/img/pictures/malchik-big.jpg' },
+    { small: '/img/pictures/maugli-small.jpg', big: '/img/pictures/maugli-big.jpg' },
+    { small: '/img/pictures/malchik-small.jpg', big: '/img/pictures/malchik-big.jpg' },
+    { small: '/img/pictures/maugli-small.jpg', big: '/img/pictures/maugli-big.jpg' },
     { small: '/img/pictures/minony-small.jpg', big: '/img/pictures/minony-big.jpg' },
     { small: '/img/pictures/panda-small.jpg', big: '/img/pictures/panda-big.jpg' },
     { small: '/img/pictures/panteryi-small.jpg', big: '/img/pictures/panteryi-big.jpg' },
@@ -142,31 +145,49 @@ let arrPictures = [
     { small: '/img/pictures/zveropolis-small.jpg', big: '/img/pictures/zveropolis-big.jpg' },
 
 ];
-function writeMenuSelectPazzle(arrImag) {
+function getNextPage() {
+    CURRENT_PAGE_PAZZLE++;
+    writeMenuSelectPazzle(CURRENT_PAGE_PAZZLE);
+}
+function getPrevPage() {
+    CURRENT_PAGE_PAZZLE = CURRENT_PAGE_PAZZLE > 0 ? --CURRENT_PAGE_PAZZLE : 0;
+    writeMenuSelectPazzle(CURRENT_PAGE_PAZZLE);
+}
+function writeMenuSelectPazzle(numb = 0) {
+    let arr;
+    if (initailValues.isPazzle == 'imag') {
+        initailValues.isVideo = false;
+        arr = arrPictures;
+    } else {
+        arr = arrPhoneImage;
+    }
+    CURRENT_PAGE_PAZZLE = numb;
+    if (CURRENT_PAGE_PAZZLE > Math.floor(arr.length/6)) {
+        CURRENT_PAGE_PAZZLE--;
+    }
     let selectList = document.querySelector('.select_list');
     selectList.innerHTML = '';
-    for (let i = 0; i < arrImag.length; i++) {
+    for (let i = 6 * CURRENT_PAGE_PAZZLE; i < arr.length && i < (6 * CURRENT_PAGE_PAZZLE + 6); i++) {
         let li = document.createElement('li');
         li.classList.add('select_item-back');
-        if (arrImag[i] !== null) {
-            li.style.backgroundImage = `url(${arrImag[i].small})`;
-            li.setAttribute('data-url', arrImag[i].big)
+        if (arr[i] !== null) {
+            li.style.backgroundImage = `url(${arr[i].small})`;
+            li.setAttribute('data-url', arr[i].big)
         }
         selectList.append(li);
     }
     const back = document.querySelectorAll('.select_item-back');
     for (let i = 0; i < back.length; i++) {
-        // back[i].addEventListener('click', (ev)=>{
-        //     paintLoader(initailValues.imag, selectSlochnostyOpen, ev)
-        // });
         back[i].addEventListener('click', selectSlochnostyOpen);
     }
 
 }
+function openMenuTop() {
+    menuTop.classList.add('open');
+}
 function startGame() {
     settingModalGame.classList.add('open');
     viborSlosnosty.classList.remove('open');
-    menuTop.classList.add('open');
     initailValues.isMusic = musicInput.checked;
     initailValues.isSound = soundInput.checked;
     initailValues.isTime = timeInput.checked;
@@ -189,8 +210,6 @@ function startGame() {
             break;
         }
     }
-        // choisiImag(initailValues.imagUrl);
-
     main();
 }
 function installInitalValues() {
@@ -208,31 +227,11 @@ function showTime() {
         time.classList.remove('close');
 }
 function goToHome() {
-    if (document.querySelector('button'))
-        document.querySelector('button').remove();
+    if (document.querySelector('.photo_button'))
+        document.querySelector('.photo_button').remove();
     settingModalGame.classList.remove('open');
     menuTop.classList.remove('open');
     startMenu.classList.remove('close');
     settingsMenu.classList.add('close');
     setDefaultSettings();
 }
-// function paintLoader(img, func, event){
-//     choisiImag(event.target.dataset.url);
-//     CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
-//     paintBackgound(initailValues.backGround);
-//     CONTEXT.clearRect(SIZE.x, SIZE.y, SIZE.width, SIZE.height);
-//     CONTEXT.globalAlpha = 0.3;
-//     // if (initailValues.isVideo && process.isGame)
-//     //     CONTEXT.drawImage(VIDEO, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
-//     // CONTEXT.drawImage(initailValues.imag, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
-//     CONTEXT.globalAlpha = 1;
-//     for (let i = 0; i < PIEZES.length; i++) {
-//         PIEZES[i].draw(CONTEXT);
-//     }
-//     CONTEXT.drawImage(UPDATE, 200, 200, 45, 45);
-//     // if (process.isGame)
-//     //     requestAnimationFrame(updateCanvas);
-//     img.onload = ()=>{
-//         // func(event);
-//     }
-// }
