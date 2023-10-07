@@ -51,7 +51,7 @@ a {
 }
 
 html {
-    font-size: 16px;
+    font-size: 26px;
 }
 
 body {
@@ -172,10 +172,12 @@ body {
     width: 100%;
     height: 100%;
 }
-
+.subsettings_color{
+    margin-bottom: 1.5rem;
+}
 .subsettings_color > div{
-    width: 4rem;
-    height: 4rem;
+    width: 5rem;
+    height: 5rem;
     border: 5px solid white;
     border-radius: 15px;
     box-shadow: 1px 1px 2px 1px rgb(32, 30, 68);
@@ -205,32 +207,43 @@ body {
 
 }
 
+.start_body{
+    height: 70%;
+    justify-content: center;
+
+}
 .start_body,
 .difficult_content {
     position: relative;
-    top: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-
 }
-
 .select_body {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .select_content {
+    border-radius: 2rem;
     overflow: hidden;
-    height: 400px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: .5rem;
-    border-radius: 1.2rem;
+}
+.difficult_content{
+    padding-top: 2rem;
 }
 
 .select_list {
+    border-radius: 2rem;
+    margin: 0 auto;
     width: 100%;
-    height: 100%;
+    height: 28rem;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -238,8 +251,8 @@ body {
 .start_list,
 .difficult_content-list {
     display: flex;
-    width: 100%;
-    justify-content: center;
+    width: 90%;
+    justify-content: space-between;
     align-items: center;
     gap: 1rem;
 }
@@ -249,20 +262,23 @@ body {
 .select_item-back {
     display: block;
     position: relative;
-    width: 20rem;
-    height: 18rem;
+    width: 18rem;
+    height: 14rem;
     border-radius: 1.2rem;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     cursor: pointer;
+    box-shadow: 2px 2px 5px 1px gray;
 }
-
+.start_item{
+    height: 16rem; 
+}
 .select_item-back {
     display: inline-block;
-    width: 16rem;
+    width: 19rem;
     height: 13rem;
-    margin: 5px;
+    margin: 13px;
 }
 
 
@@ -343,18 +359,20 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 4rem;
+    height: 80%;
 }
-
+.settings_list{
+    margin-bottom: 1.5rem;
+}
 .settings_item {
     display: flex;
     align-items: center;
 }
 
 .settings_name {
-    width: 9rem;
-    font-size: 2rem;
-    line-height: .1rem;
+    width: 12rem;
+    font-size: 2.4rem;
+    line-height: 3rem;
 }
 
 .settings_input {
@@ -369,19 +387,19 @@ body {
 .settings_switch {
     display: flex;
     justify-content: start;
-    width: 4rem;
-    height: 2rem;
+    width: 5rem;
+    height: 2.5rem;
     border: .3rem solid white;
     box-shadow: 2px 1px 5px 1px gray,
         inset 1px 1px 2px 1px rgb(202, 200, 200);
-    border-radius: 1rem;
+    border-radius: 2.5rem;
     background-color: blanchedalmond;
     cursor: pointer;
 }
 
 .switch {
-    height: 1.5rem;
-    width: 1.5rem;
+    height: 2rem;
+    width: 2rem;
     border-radius: 50%;
     background-color: blueviolet;
     box-shadow: inset 0 0 1px 3px rgb(175, 81, 179);
@@ -481,10 +499,12 @@ body {
     display: none;
 }
 
-.test {
+.photo_button {
     position: fixed;
-    bottom: 100px;
-    left: 100px;
-    padding: 10px;
+    font-size: 2rem;
+    bottom: 10%;
+    right: 6%;
+    padding: 1rem;
+    border-radius: 2rem;
     background-color: red;
 }

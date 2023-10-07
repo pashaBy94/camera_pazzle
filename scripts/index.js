@@ -60,8 +60,8 @@ function main() {
     CANVAS = document.getElementById('myCanvas');
     CONTEXT = CANVAS.getContext('2d');
     UPDATE.src = '/img/update.svg';
-    // loader();
-    // initailValues.imag.onload = () => {
+    loader();
+    initailValues.imag.onload = () => {
         addEventListener();
         process.isGame = true;
         switch (initailValues.isPazzle) {
@@ -109,20 +109,20 @@ function main() {
             default:
                 break;
         }
-    // }
+    }
 
 }
 function addButtonForPhoto() {
     let button = document.createElement('button');
-    button.innerHTML = 'PHOTO';
-    button.classList.add('test');
+    button.innerHTML = 'ФОТО';
+    button.classList.add('photo_button');
     button.addEventListener('click', pressPhoto);
     document.querySelector('.contains').append(button);
 }
 function pressPhoto() {
     VIDEO.pause();
     randomizePiezes();
-    document.querySelector('.test').remove();
+    document.querySelector('.photo_button').remove();
 }
 function setDifficult() {
     switch (initailValues.difficult) {
@@ -187,7 +187,7 @@ function addEventListener() {
 }
 
 function onMouseDown(ev) {
-    if (ev.x > 200 && ev.x < 250 && ev.y > 200 && ev.y < 250) randomizePiezes() ////test -------------------------
+    if (ev.x > (SIZE.x + SIZE.width*1.05) && ev.x < (SIZE.x + SIZE.width*1.05 + SIZE.width*0.1) && ev.y > SIZE.y && ev.y < (SIZE.y + SIZE.width*0.1)) randomizePiezes() ////test -------------------------
     SELECTED_PIEZES = getSelectedPiezes(ev);
     if (SELECTED_PIEZES !== null && SELECTED_PIEZES.correct === false) {
         CANVAS.addEventListener('mousemove', onMouseMove);
@@ -234,7 +234,7 @@ function endGame() {
     process.isGame = false;
     CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
     paintBackgound(initailValues.backGround);
-    CONTEXT.clearRect(SIZE.x--, SIZE.y--, SIZE.width += 2, SIZE.height += 2);
+    CONTEXT.clearRect(SIZE.x--, SIZE.y, SIZE.width += 2, SIZE.height += 2);
     if (initailValues.isVideo && VIDEO != null)
         CONTEXT.drawImage(VIDEO, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
     CONTEXT.drawImage(initailValues.imag, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
@@ -311,7 +311,7 @@ function updateCanvas() {
     for (let i = 0; i < PIEZES.length; i++) {
         PIEZES[i].draw(CONTEXT);
     }
-    CONTEXT.drawImage(UPDATE, 200, 200, 45, 45);
+    CONTEXT.drawImage(UPDATE, SIZE.x + SIZE.width*1.05, SIZE.y, SIZE.width*0.1, SIZE.width*0.1);
     if (process.isGame)
         requestAnimationFrame(updateCanvas);
 }
@@ -376,5 +376,5 @@ function initialPieze() {
             cnt++;
         }
     }
-    startedTime();
+    // startedTime();
 }

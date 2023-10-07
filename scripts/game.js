@@ -363,4 +363,5 @@ function randomizePiezes() {
         }
     }
     playSound(PAZZLE_AUDIO);
+    startedTime();
 }
