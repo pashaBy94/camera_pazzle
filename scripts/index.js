@@ -41,17 +41,26 @@ function playMusic(audio) {
     if (initailValues.isMusic) audio.play();
     else audio.pause();
 }
-function getColor(){
-    return `rgb(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)})`
-}
+
 function loader() {
-    handleResize();
+    CANVAS.width = window.innerWidth;
+    CANVAS.height = window.innerHeight;
+    let line = Math.min(CANVAS.width, CANVAS.height);
+    SIZE.width = line / 2;
+    SIZE.height = line / 2;
+    SIZE.x = CANVAS.width / 2 - SIZE.width / 2;
+    SIZE.y = CANVAS.height / 2 - SIZE.height / 2;
     initialPieze();
     paintBackgound(initailValues.backGround);
     for (let i = 0; i < PIEZES.length; i++) {
         setTimeout(() => {
-            PIEZES[i].drawColor(CONTEXT);
-        }, i * 100);
+            try {
+                PIEZES[i].drawColor(CONTEXT);
+                if (i === PIEZES.length - 1 && !process.isGame)
+                    loader();
+            } catch (e) {
+            }
+        }, i * 200);
     }
 }
 function main() {
@@ -61,6 +70,7 @@ function main() {
     CONTEXT = CANVAS.getContext('2d');
     UPDATE.src = '/img/update.svg';
     loader();
+    choisiImag(initailValues.imagUrl);
     initailValues.imag.onload = () => {
         addEventListener();
         process.isGame = true;
@@ -77,7 +87,6 @@ function main() {
                         initialPieze();
                         randomizePiezes();
                         updateCanvas();
-                        console.log(SIZE.x);
                     }
                 }).catch(err => alert('camera error:' + err))
                 break;
@@ -133,11 +142,11 @@ function setDifficult() {
         };
         case 'medium': {
             SIZE.rows = 5;
-            SIZE.columns = 5;
+            SIZE.columns = 6;
             break;
         }
         case 'hard': {
-            SIZE.rows = 8;
+            SIZE.rows = 7;
             SIZE.columns = 8;
             break;
         }
@@ -166,13 +175,6 @@ function updateTime() {
         document.querySelector('.time').innerHTML = time;
     }
 }
-function formatedTime(time) {
-    let sec = Math.trunc((new Date().getTime() - time) / 1000);
-    let second = sec % 60;
-    let minutes = Math.trunc((sec % (60 * 60)) / 60);
-    let hours = Math.trunc((sec % (60 * 60 * 24)) / (60 * 60));
-    return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes}:${second < 10 ? '0' + second : second}`;
-}
 function stopedTime() {
     END_TIME = START_TIME;
     clearInterval(updateTime, 1000);
@@ -200,12 +202,34 @@ function onMouseDown(ev) {
     }
 }
 function onTouchStart(event) {
+    console.log('touch');
     let coord = { x: event.touches[0].clientX, y: event.touches[0].clientY };
     onMouseDown(coord);
     if (SELECTED_PIEZES) {
         CANVAS.addEventListener('touchmove', onTouchMove);
     }
 }
+
+// function onTouchStart(event) {
+//     console.log('touch');
+//     let coord = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+//         SELECTED_PIEZES = getSelectedPiezes(event);
+
+//     // onMouseDown(coord);
+//     if (SELECTED_PIEZES !== null && SELECTED_PIEZES.correct === false) {
+//         CANVAS.addEventListener('touchmove', onTouchMove);
+//         PIEZES.splice(CURRENT_PIEZED_INDEX, 1);
+//         PIEZES.push(SELECTED_PIEZES);
+//         SELECTED_PIEZES.offset = {
+//             x: coord.x - SELECTED_PIEZES.x,
+//             y: coord.y - SELECTED_PIEZES.y
+//         }
+//     }
+//     // if (SELECTED_PIEZES) {
+//     //     CANVAS.addEventListener('touchmove', onTouchMove);
+//     // }
+// }
+
 
 function onMouseMove(ev) {
     if (SELECTED_PIEZES !== null) {
@@ -222,6 +246,7 @@ function isComplete() {
     return false
 }
 function comletedPiezes() {
+    console.log(22);
     CANVAS.removeEventListener('mousedown', onMouseDown);
     CANVAS.removeEventListener('touchstart', onTouchStart);
     console.log('end');
@@ -376,5 +401,4 @@ function initialPieze() {
             cnt++;
         }
     }
-    // startedTime();
 }

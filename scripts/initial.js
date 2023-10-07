@@ -43,8 +43,8 @@ function closeSettings() {
     settingsMenu.classList.remove('open')
 }
 function selectSlochnostyOpen(ev) {
-    // initailValues.imagUrl = ev.target.dataset.url;
-    choisiImag(ev.target.dataset.url);
+    initailValues.imagUrl = ev.target.dataset.url;
+    // choisiImag(ev.target.dataset.url);
     checkBack.classList.remove('open');
     viborSlosnosty.classList.add('open');
 }
@@ -76,7 +76,8 @@ function openMenuBackgroundPazzle() {
     startMenu.classList.remove('close');
     checkBack.classList.remove('open');
 }
-let arrPhoneImage = [null,
+let arrPhoneImage = [
+    { small: '/img/emptyImg.png', big: '/img/emptyImg.png' },
     { small: '/img/smallFone/batterflies-small.png', big: '/img/bigFone/batterflies-big.png' },
     { small: '/img/smallFone/cloud-small.png', big: '/img/bigFone/cloud-big.png' },
     { small: '/img/smallFone/eralash-small.png', big: '/img/bigFone/eralash-big.png' },
