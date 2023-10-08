@@ -371,9 +371,9 @@ function addEventListener() {
     CANVAS.addEventListener('touchstart', onTouchStart);
     CANVAS.addEventListener('mouseup', onMouseUp);
     CANVAS.addEventListener('touchend', onTouchEnd);
-}
+} 
 function onMouseDown(ev) {
-    if (ev.x > CANVAS.width*0.9 && ev.x < CANVAS.width*0.97 && ev.y > SIZE.y && ev.y < (SIZE.y + CANVAS.width*0.07)) randomizePiezes() ////test -------------------------
+    if (ev.x > CANVAS.width * 0.9 && ev.x < CANVAS.width * 0.97 && ev.y > CANVAS.height - CANVAS.width * 0.14 && ev.y < (CANVAS.height - CANVAS.width * 0.14 + CANVAS.width * 0.07)) randomizePiezes() ////test -------------------------
     SELECTED_PIEZES = getSelectedPiezes(ev);
     if (SELECTED_PIEZES !== null && SELECTED_PIEZES.correct === false) {
         CANVAS.addEventListener('mousemove', onMouseMove);
@@ -410,7 +410,6 @@ function isComplete() {
 function comletedPiezes() {
     CANVAS.removeEventListener('mousedown', onMouseDown);
     CANVAS.removeEventListener('touchstart', onTouchStart);
-    console.log('end');
     stopedTime();
     endGame();
 }
@@ -427,11 +426,87 @@ function endGame() {
     if (VARIABLE_END > 0) {
         requestAnimationFrame(endGame);
     } else {
-        CANVAS.addEventListener('mousedown', toStart);
-        CANVAS.addEventListener('touchstart', toStart);
+        CANVAS.addEventListener('mousedown', endGameMessag);
+        CANVAS.addEventListener('touchstart', endGameMessag);
     }
 }
+
+function endGameMessag() {
+    CANVAS.removeEventListener('mousedown', endGameMessag);
+    CANVAS.removeEventListener('touchstart', endGameMessag);
+    paintBackgound(initailValues.backGround);
+    // CONTEXT.clearRect(SIZE.x--, SIZE.y, SIZE.width += 2, SIZE.height += 2);
+    // function roundRect(CONTEXT, x1, y1, x2, y2, radius) {
+    //     radius = Math.min(radius, (x2 - x1) / 2, (y2 - y1) / 2); // избегаем артефактов, в случае если радиус скругления больше одной из сторон
+    //     CONTEXT.beginPath();
+    //     CONTEXT.fillStyle = "#ffffff";
+    //     CONTEXT.moveTo(x1 + radius, y1);
+    //     CONTEXT.lineTo(x2 - radius, y1);
+    //     CONTEXT.arcTo(x2, y1, x2, y1 + radius, radius);
+    //     CONTEXT.lineTo(x2, y2 - radius);
+    //     CONTEXT.arcTo(x2, y2, x2 - radius, y2, radius);
+    //     CONTEXT.lineTo(x1 + radius, y2);
+    //     CONTEXT.arcTo(x1, y2, x1, y2 - radius, radius);
+    //     CONTEXT.lineTo(x1, y1 + radius);
+    //     CONTEXT.arcTo(x1, y1, x1 + radius, y1, radius);
+    //     CONTEXT.shadowColor = "gray";
+    //     CONTEXT.shadowBlur = 10;
+    //     CONTEXT.shadowOffsetX = 5;
+    //     CONTEXT.shadowOffsetY = 5;
+    //     CONTEXT.fill();
+    //     CONTEXT.textBaseline = "top";
+    //     CONTEXT.font = "bold 50px Arial";
+
+    //     CONTEXT.shadowBlur = 3;
+    //     CONTEXT.shadowOffsetX = 2;
+    //     CONTEXT.shadowOffsetY = 2;
+    //     CONTEXT.fillStyle = "steelblue";
+    //     CONTEXT.fillText("Ты молодец", SIZE.x + SIZE.width/1.6, SIZE.y + 20);
+    //     CONTEXT.font = "bold 30px Arial";
+
+    //     CONTEXT.shadowBlur = 5;
+    //     CONTEXT.shadowOffsetX = 20;
+    //     CONTEXT.shadowOffsetY = 20;
+    //     CONTEXT.fillStyle = "steelblue";
+    //     CONTEXT.fillText("Попробуй еще раз", SIZE.x + SIZE.width/1.6, SIZE.y + 60);
+
+    // }
+    // function yop() {
+    //     // CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
+    //     // CONTEXT.fillStyle = "#ffffff";
+    //     CONTEXT.strokeStyle = "#ff0000";
+    //     roundRect(CONTEXT, SIZE.x, SIZE.y, SIZE.x + SIZE.width, SIZE.y + SIZE.height, 20);
+    // }
+    // requestAnimationFrame(yop);
+    let div = document.createElement('div');
+    div.classList.add('messag_wins');
+    let div2 = document.createElement('div');
+    div2.classList.add('messag_wrap');
+    div.append(div2);
+    let h2 = document.createElement('h2');
+    h2.classList.add('messag_title');
+    h2.innerHTML = 'Ты молодец.';
+    div2.append(h2);
+    let div3 = document.createElement('div');
+    div3.classList.add('messag_text-wrap');
+    div2.append(div3);
+    let p1 = document.createElement('p');
+    p1.classList.add('messag_text');
+    p1.innerHTML = `Твой результат составляет: ${formatedTime(END_TIME)}.`;
+    div3.append(p1);
+    let p2 = document.createElement('p');
+    p2.classList.add('messag_text');
+    p2.innerHTML = `Сыграй еще один раз.`;
+    div3.append(p2);
+    document.body.append(div);
+    div.addEventListener('mousedown', toStart);
+    div.addEventListener('touchstart', toStart);
+    CANVAS.addEventListener('mousedown', toStart);
+    CANVAS.addEventListener('touchstart', toStart);
+}
+
 function toStart() {
+    document.querySelector('.messag_wins').remove();
     goToHome();
     CANVAS.removeEventListener('mousedown', toStart);
     CANVAS.removeEventListener('touchstart', toStart);
