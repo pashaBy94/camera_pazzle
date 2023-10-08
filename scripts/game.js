@@ -366,3 +366,103 @@ function randomizePiezes() {
     playSound(PAZZLE_AUDIO);
     startedTime();
 }
+function addEventListener() {
+    CANVAS.addEventListener('mousedown', onMouseDown);
+    CANVAS.addEventListener('touchstart', onTouchStart);
+    CANVAS.addEventListener('mouseup', onMouseUp);
+    CANVAS.addEventListener('touchend', onTouchEnd);
+}
+function onMouseDown(ev) {
+    if (ev.x > CANVAS.width*0.9 && ev.x < CANVAS.width*0.97 && ev.y > SIZE.y && ev.y < (SIZE.y + CANVAS.width*0.07)) randomizePiezes() ////test -------------------------
+    SELECTED_PIEZES = getSelectedPiezes(ev);
+    if (SELECTED_PIEZES !== null && SELECTED_PIEZES.correct === false) {
+        CANVAS.addEventListener('mousemove', onMouseMove);
+        PIEZES.splice(CURRENT_PIEZED_INDEX, 1);
+        PIEZES.push(SELECTED_PIEZES);
+        SELECTED_PIEZES.offset = {
+            x: ev.x - SELECTED_PIEZES.x,
+            y: ev.y - SELECTED_PIEZES.y
+        }
+    }
+}
+function onTouchStart(event) {
+    let coord = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    onMouseDown(coord);
+    if (SELECTED_PIEZES) {
+        CANVAS.addEventListener('touchmove', onTouchMove);
+    }
+}
+
+function onMouseMove(ev) {
+    if (SELECTED_PIEZES !== null) {
+        SELECTED_PIEZES.x = ev.x - SELECTED_PIEZES.offset.x;
+        SELECTED_PIEZES.y = ev.y - SELECTED_PIEZES.offset.y;
+    }
+}
+function onTouchMove(event) {
+    let coord = { x: event.touches[0].clientX, y: event.touches[0].clientY };
+    onMouseMove(coord)
+}
+function isComplete() {
+    if (CORRECT_PIEZES.size === PIEZES.length) return true
+    return false
+}
+function comletedPiezes() {
+    CANVAS.removeEventListener('mousedown', onMouseDown);
+    CANVAS.removeEventListener('touchstart', onTouchStart);
+    console.log('end');
+    stopedTime();
+    endGame();
+}
+
+function endGame() {
+    VARIABLE_END--;
+    process.isGame = false;
+    CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
+    paintBackgound(initailValues.backGround);
+    CONTEXT.clearRect(SIZE.x--, SIZE.y, SIZE.width += 2, SIZE.height += 2);
+    if (initailValues.isVideo && VIDEO != null)
+        CONTEXT.drawImage(VIDEO, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
+    CONTEXT.drawImage(initailValues.imag, SIZE.x, SIZE.y, SIZE.width, SIZE.height);
+    if (VARIABLE_END > 0) {
+        requestAnimationFrame(endGame);
+    } else {
+        CANVAS.addEventListener('mousedown', toStart);
+        CANVAS.addEventListener('touchstart', toStart);
+    }
+}
+function toStart() {
+    goToHome();
+    CANVAS.removeEventListener('mousedown', toStart);
+    CANVAS.removeEventListener('touchstart', toStart);
+}
+
+function onMouseUp() {
+    if (SELECTED_PIEZES) {
+        if (SELECTED_PIEZES.isClose()) {
+            SELECTED_PIEZES.snap();
+        }
+        if (isComplete()) {
+            comletedPiezes();
+        }
+        SELECTED_PIEZES = null;
+        CANVAS.removeEventListener('mousemove', onMouseMove);
+    }
+}
+function onTouchEnd() {
+    if (SELECTED_PIEZES) {
+        onMouseUp();
+        CANVAS.removeEventListener('touchmove', onTouchMove);
+    }
+}
+
+function getSelectedPiezes(evt) {
+    for (let i = PIEZES.length - 1; i >= 0; i--) {
+        if (evt.x > PIEZES[i].x && evt.x < PIEZES[i].x + PIEZES[i].width &&
+            evt.y > PIEZES[i].y && evt.y < PIEZES[i].y + PIEZES[i].height) {
+            CURRENT_PIEZED_INDEX = i;
+            return PIEZES[i];
+        }
+    }
+    return null
+}

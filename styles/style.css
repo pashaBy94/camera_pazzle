@@ -178,8 +178,8 @@ body {
 .subsettings_color > div{
     width: 5rem;
     height: 5rem;
-    border: 5px solid white;
-    border-radius: 15px;
+    border: .3rem solid white;
+    border-radius: .8rem;
     box-shadow: 1px 1px 2px 1px rgb(32, 30, 68);
     display: inline-block;
 }
@@ -507,13 +507,6 @@ body {
     border: .3rem solid rgb(212, 248, 255);
 }
 
-.open {
-    display: flex;
-}
-
-.close {
-    display: none;
-}
 
 .photo_button {
     position: fixed;
@@ -524,93 +517,264 @@ body {
     border-radius: 2rem;
     background-color: red;
 }
-
-@media (min-width: 2550px) {
+@media (min-width: 400px) and (orientation: landscape)   {
     html {
-        font-size: 38px;
+        font-size: 8px;
+    }
+    .select_item-back {
+        width: 10.5rem;
+        height: 9rem;
+        }
+}
+@media (min-width: 600px) and (orientation: landscape)   {
+    html {
+        font-size: 9px;
+    }
+    .select_item-back {
+        width: 13.5rem;
+        height: 10rem;
+        margin: 8px;
+        }
+}
+@media (min-width: 800px){
+    html {
+        font-size: 13px;
+    }
+    .select_item-back {
+        width: 11rem;
+        height: 9.5rem;
+        }
+}
+@media (min-width: 800px) and (orientation: landscape)   {
+    html {
+        font-size: 10px;
+    }
+    .select_item-back {
+        width: 13rem;
+        height: 9rem;
+        }
+}
+@media (min-width: 900px) {
+    html {
+        font-size: 15px;
+    }
+    .select_item-back {
+        width: 11rem;
+        height: 9.5rem;
+        }
+}
+@media (min-width: 900px) and (orientation: landscape) {
+    html {
+        font-size: 10px;
+    }
+    .select_item-back {
+        width: 16rem;
+        height: 10.5rem;
+        }
+}
+@media (min-width: 1000px){
+    html {
+        font-size: 16px;
+    }
+    .select_item-back {
+        width: 12rem;
+        height: 10.5rem;
+        }
+}
+@media (min-width: 1000px) and (orientation: landscape){
+    html {
+        font-size: 16px;
+    }
+    .select_item-back {
+        width: 12rem;
+        height: 10.5rem;
+        }
+}
+@media (min-width: 1100px){
+    html {
+        font-size: 16px;
+    }
+    .select_item-back {
+        width: 14rem;
+        height: 12.5rem;
+        }
+}
+@media (min-width: 1100px) and (orientation: landscape){
+    html {
+        font-size: 16px;
+    }
+    .select_item-back {
+        width: 14rem;
+        height: 12.5rem;
+        }
+}
+@media (min-width: 1200px){
+    html {
+        font-size: 17px;
+    }
+    .select_item-back {
+        width: 14.6rem;
+        height: 12.5rem;
+        }
+}
+@media (min-width: 1200px) and (orientation: landscape){
+    html {
+        font-size: 17px;
+    }
+    .select_item-back {
+        width: 14.6rem;
+        height: 12.5rem;
+        }
+}
+@media (min-width: 1300px){
+    html {
+        font-size: 17px;
+    }
+    .select_item-back {
+        width: 15rem;
+        height: 11.5rem;
+    }
+}
+@media (min-width: 1300px) and (orientation: landscape){
+    html {
+        font-size: 17px;
+    }
+    .select_item-back {
+        width: 15rem;
+        height: 11.5rem;
+    }
+}
+@media (min-width: 1400px){
+    html {
+        font-size: 19px;
+    }
+    .select_item-back {
+        width: 15rem;
+        height: 12.5rem;
     }
 
 }
-@media (min-width: 2250px) {
+@media (min-width: 1400px) and (orientation: landscape)   {
+    html {
+        font-size: 19px;
+    }
+    .select_item-back {
+        width: 15rem;
+        height: 12.5rem;
+    }
+
+}
+@media (min-width: 1500px){
+    html {
+        font-size: 20px;
+    }
+    .select_item-back {
+        width: 16rem;
+    }
+}
+@media (min-width: 1500px) and (orientation: landscape)   {
+    html {
+        font-size: 20px;
+    }
+    .select_item-back {
+        width: 16rem;
+    }
+}
+@media (min-width: 1700px){
+    html {
+        font-size: 24px;
+    }
+    .select_item-back {
+        width: 15rem;
+    }
+}
+@media (min-width: 1700px) and (orientation: landscape)   {
+    html {
+        font-size: 24px;
+    }
+    .select_item-back {
+        width: 15rem;
+    }
+}
+@media (min-width: 1900px) {
+    html {
+        font-size: 26px;
+    }
+    .select_item-back {
+        width: 16rem;
+    }
+}
+@media (min-width: 1900px) and (orientation: landscape)   {
+    html {
+        font-size: 26px;
+    }
+    .select_item-back {
+        width: 16rem;
+    }
+}
+@media (min-width: 2000px){
+    html {
+        font-size: 28px;
+    }
+        .select_item-back {
+        width: 15.5rem;
+        height: 11.6rem;
+    }
+
+}
+@media (min-width: 2000px) and (orientation: landscape) {
+    html {
+        font-size: 28px;
+    }
+        .select_item-back {
+        width: 15.5rem;
+        height: 11.6rem;
+    }
+
+}
+@media (min-width: 2250px) and (orientation: landscape) {
     html {
         font-size: 35px;
     }
 
 }
-@media (min-width: 2000px) {
+@media (min-width: 2250px){
     html {
-        font-size: 28px;
+        font-size: 35px;
     }
 
 }
-@media (max-width: 1536px) {
+@media (min-width: 2550px){
     html {
-        font-size: 20px;
-    }
-    /* .select_item-back {
-        width: 17rem;
-    } */
-}
-@media (max-width: 1490px) {
-    html {
-        font-size: 19px;
+        font-size: 38px;
     }
 
 }
-@media (max-width: 1440px) {
+@media (min-width: 2550px) and (orientation: landscape) {
     html {
-        font-size: 19px;
+        font-size: 38px;
     }
-
 }
-@media (max-width: 1367px) {
-    html {
-        font-size: 18px;
-    }
 
+.messag_rotate{
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: blueviolet;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
 }
-@media (max-width: 1280px)  {
-    html {
-        font-size: 17px;
-    }
-    .select_item-back {
-        width: 17.4rem;
-    }
-
+.messag_rotate-img{
+    width: 70%;
 }
-/* @media (max-width: 1280px) and (min-height: 800px)  {
-    html {
-        font-size: 16px;
-    }
-
+.open {
+    display: flex;
 }
-*/
-@media (max-width: 1280px) and (min-height: 900px)  {
-    html {
-        font-size: 16px;
-    }
-    .select_item-back {
-        width: 17.4rem;
-    }
-    .top_menu {
-        height: 6rem;
 
-    }
-    .settings_list {
-        margin-bottom: 2.5rem;
-    }
-    .subsettings_color {
-        margin-bottom: 2.5rem;
-    }
-    .settings_name {
-        line-height: 4rem;
-    }
-} 
-/* @media (max-width: 1280px) and (min-height: 800px) and (max-height: 1024px) {
-    html {
-        font-size: 16px;
-    }
-    .select_list {
-        height: 38rem;
-    }
-} */
+.close {
+    display: none;
+}
