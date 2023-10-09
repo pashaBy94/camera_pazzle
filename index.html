@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PuzzleCam Game</title>
   <!-- <script src="scripts/initial.js"></script> -->
-  <!-- <script src="scripts/downloadImag.js"></script> -->
+  <script src="scripts/downloadImag.js"></script>
   <link rel="stylesheet" href="styles/style.css">
   <!-- <link rel="prefetch" href='/img/emptyImg.png'>
   <link rel="prefetch" href='/img/smallFone/batterflies-small.png'>
@@ -17,19 +17,9 @@
   <link rel="prefetch" href='/img/smallFone/miki-small.png'>
   <link rel="prefetch" href='/img/smallFone/rabbit-small.png'>
   <link rel="prefetch" href='/img/smallFone/sailor-small.png'> -->
-
 </head>
 
 <body>
-  <!-- <div class="messag_wins">
-    <div class="messag_wrap">
-      <h2 class="messag_title">Ты молодец.</h2>
-      <div class="messag_text-wrap">
-        <p class="messag_text">Твой результат составляет 22 мин.</p>
-        <p class="messag_text">Сыграй еще один раз.</p>
-      </div>
-    </div>
-  </div> -->
   <div class="contains">
     <div class="start_menu">
       <div class="start_container">
@@ -207,81 +197,77 @@
   <div class="messag_rotate">
     <img src="img/rotate.svg" alt="" class="messag_rotate-img">
   </div>
+
   <script src="scripts/initialValues.js"></script>
   <script src="scripts/selectPazzle.js"></script>
   <script src="scripts/loader.js"></script>
-
   <script src="scripts/initial.js"></script>
   <script src="scripts/utils.js"></script>
   <script src="scripts/game.js"></script>
   <script src="scripts/index.js"></script>
-  </div>
-  <div class="leftt"></div>
-
-  </div>
-
-
-
-
-
-
-
-
   <div id="preloader_malc">
-
     <div>
-
-      Подождите, идет загрузка сайта ...
-
+      <img src="img/icon2.png" alt="Идет загрузка" class="img_loader" />
+      <p>Загрузка...</p>
     </div>
-
   </div>
 
   <style type="text/css">
+    .img_loader {
+      height: 50%;
+      animation: scales 1.5s ease infinite;
+    }
+
+    @keyframes scales {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(0.9);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
     #preloader_malc {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(0, 0, 0, .6);
-      z-index: 99
+      z-index: 99;
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
     }
 
     #preloader_malc div {
-      background: #fff;
-      width: 260px;
-      height: 40px;
-      line-height: 40px;
+      background: #9C54E0;
       border-radius: 8px;
-      font-family: arial;
-      font-size: 15px;
       color: #111;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
       position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       z-index: 999;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      margin: auto
+    }
+    #preloader_malc div p {
+      color: white;
     }
   </style>
 
   <script type="text/javascript">
-
     window.onload = function () {
-
       setTimeout(function () {
-
         document.getElementById("preloader_malc").style.display = "none";
-
-      }, 400);
-
+      }, 10);
     };
-
   </script>
 </body>
-
 </html>

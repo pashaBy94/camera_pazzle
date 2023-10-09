@@ -367,6 +367,9 @@ function randomizePiezes() {
     startedTime();
 }
 function addEventListener() {
+    document.addEventListener('mousedown', ()=>playSound(CLICK_AUDIO));
+    document.body.addEventListener('touchstart', ()=>playSound(CLICK_AUDIO));
+
     CANVAS.addEventListener('mousedown', onMouseDown);
     CANVAS.addEventListener('touchstart', onTouchStart);
     CANVAS.addEventListener('mouseup', onMouseUp);
@@ -415,6 +418,7 @@ function comletedPiezes() {
 }
 
 function endGame() {
+    playSound(WINS_AUDIO);
     VARIABLE_END--;
     process.isGame = false;
     CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);
@@ -492,7 +496,7 @@ function endGameMessag() {
     div2.append(div3);
     let p1 = document.createElement('p');
     p1.classList.add('messag_text');
-    p1.innerHTML = `Твой результат составляет: ${formatedTime(END_TIME)}.`;
+    p1.innerHTML = `Твой результат составляет: ${time.innerHTML}.`;
     div3.append(p1);
     let p2 = document.createElement('p');
     p2.classList.add('messag_text');
