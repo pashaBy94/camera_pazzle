@@ -15,9 +15,7 @@ const time = document.querySelector('.time');
 const colors = document.querySelectorAll('.color');
 const selectListPrev = document.querySelector('.select_list-prev');
 const selectListNext = document.querySelector('.select_list-next');
-window.onload = ()=>{
-    console.log(222);
-}
+
 function initialGame() {
     showMessagRotate();
     addEventListenerInitial();
@@ -42,6 +40,9 @@ function addEventListenerInitial() {
     settingTohome.addEventListener('click', goToHome);
     selectListNext.addEventListener('click', getNextPage);
     selectListPrev.addEventListener('click', getPrevPage);
+    document.body.addEventListener('click',()=>{
+        playSound(CLICK_AUDIO);
+    });
     for (let i = 0; i < items.length; i++) {
         items[i].addEventListener('click', selectScenari);
     }
