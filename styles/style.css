@@ -1,23 +1,13 @@
 * {
     box-sizing: border-box;
-    scrollbar-width: thin;
-    scrollbar-color: blue rgb(255, 255, 255);
 }
 
-*::-webkit-scrollbar {
-    height: 12px;
-    width: 12px;
-}
+.de{
+    background: linear-gradient(#1c8ebe,   rgb(65, 93, 146), #F36223, #883f1f, #97e234); 
 
-*::-webkit-scrollbar-track {
-    background: rgb(255, 255, 255);
-}
+} 
 
-*::-webkit-scrollbar-thumb {
-    background-color: blue;
-    border-radius: 10px;
-    border: 3px solid rgb(255, 255, 255);
-}
+
 
 li,
 ul {
@@ -106,10 +96,10 @@ body {
 .start_title,
 .settings_title,
 .select_title {
-    background-color: rgb(84, 77, 179);
+    background-color: #1c8ebe;
     padding: .6rem 3rem;
     border-radius: 1rem;
-    box-shadow: 0 .6rem .3rem 0 rgb(32, 30, 68);
+    box-shadow: 0 .6rem .3rem 0 rgb(65, 93, 146);
     height: 5.5rem;
     width: 70%;
     display: flex;
@@ -124,7 +114,7 @@ body {
     cursor: pointer;
     padding: .7rem;
     border-radius: 1rem;
-    background: linear-gradient(rgb(124, 121, 163), rgb(86, 80, 170));
+    background: linear-gradient(#2283ac, #1c8ebe);
 }
 
 .start_settings-button,
@@ -132,24 +122,22 @@ body {
 .select_close {
     height: 5.5rem;
     width: 5.5rem;
-    box-shadow: 0 .6rem .3rem 0 rgb(32, 30, 68);
+    box-shadow: 0 .6rem .3rem 0  rgb(65, 93, 146);
 }
 
 .start_settings-button:hover,
-.top_menu-button:hover {
-    box-shadow: 0 .3rem .3rem 0 rgb(32, 30, 68);
+.select_close:hover {
+    box-shadow: 0 .3rem .3rem 0 rgb(65, 93, 146);
     transform: translateY(3px);
-
 }
 
-.settings_close:hover,
-.select_close:hover {
-    box-shadow: 0 .3rem .3rem 0 rgb(156, 78, 167);
+.settings_close:hover {
+    box-shadow: 0 .3rem .3rem 0 #883f1f;
     transform: translateY(3px);
 }
 
 .subsettings_return-start:hover {
-    box-shadow: 0 .3rem .3rem 0 rgb(156, 78, 167);
+    box-shadow: 0 .3rem .3rem 0 #6eb115;
     transform: translateY(3px);
 }
 
@@ -158,12 +146,19 @@ body {
 .subsettings_return_imag,
 .top_menu_setting {
     font-size: 0;
-    border: 1px solid gray;
+    border: 1px solid #135f80;
     border-radius: 1rem;
     padding: .4rem;
-    box-shadow: inset 0 0 .6rem 1px rgb(32, 30, 68);
+    box-shadow: inset 0 0 .6rem 1px #135f80;
 }
-
+.settings_close-imag{
+    border: 1px solid #a54318;
+    box-shadow: inset 0 0 .6rem 1px #a54318;
+}
+.subsettings_return_imag{
+    border: 1px solid #74af27;
+    box-shadow: inset 0 0 .6rem 1px #659823;
+}
 .settings_close-img,
 .start_settings-img,
 .select_close-img,
@@ -183,7 +178,7 @@ body {
     height: 5rem;
     border: .3rem solid white;
     border-radius: .8rem;
-    box-shadow: 1px 1px 2px 1px rgb(32, 30, 68);
+    box-shadow: 1px 1px 2px 1px gray;
     display: inline-block;
     margin: 0 .5rem;
 }
@@ -235,15 +230,18 @@ body {
 .button_list {
     font-size: 0;
     line-height: 0;
-    color: gray;
-    background-color: #822be6;
+    background-color: #1c8ebe;
     display: flex;
     padding: .5rem;
     justify-content: center;
     align-items: center;
     border-radius: .5rem;
+    box-shadow: 0 .6rem .3rem 0  rgb(65, 93, 146);
 }
-
+.button_list:hover {
+    box-shadow: 0 .3rem .3rem 0 rgb(65, 93, 146);
+    transform: translateY(3px);
+}
 .button_list img {
     width: 6rem;
     height: 6rem;
@@ -396,8 +394,8 @@ body {
 }
 
 .settings_close {
-    background: linear-gradient(rgb(162, 121, 163), rgb(192, 74, 192));
-    box-shadow: 0 .6rem .3rem 0 rgb(57, 30, 68);
+    background: linear-gradient(#da5821, #F36223);
+    box-shadow: 0 .6rem .3rem 0 #883f1f;
 }
 
 .settings_body {
@@ -436,24 +434,36 @@ body {
 .settings_switch {
     display: flex;
     justify-content: start;
-    width: 5rem;
-    height: 2.5rem;
+    width: 6rem;
+    height: 2.8rem;
     border: .3rem solid white;
     box-shadow: 2px 1px 5px 1px gray,
         inset 1px 1px 2px 1px rgb(202, 200, 200);
-    border-radius: 2.5rem;
+    border-radius: 2.8rem;
     background-color: blanchedalmond;
     cursor: pointer;
 }
 
 .switch {
-    height: 2rem;
-    width: 2rem;
+    height: 2.3rem;
+    width: 2.3rem;
+    position: relative;
     border-radius: 50%;
-    background-color: blueviolet;
-    box-shadow: inset 0 0 1px 3px rgb(175, 81, 179);
+    /* background-color: blueviolet; */
+    background: radial-gradient(blueviolet, rgb(194, 168, 217));
+    /* box-shadow: inset 0 0 1px 3px rgb(141, 41, 234); */
 }
-
+.switch::before{
+    content: '';
+    width: .7rem;
+    height: 1rem;
+    background: radial-gradient(rgb(255, 255, 255), transparent);
+    position: absolute;
+    transform: rotate(-45deg);
+    top: .1rem;
+    right: .2rem;
+    filter: blur(.1rem);
+}
 .select_item {
     border: .3rem solid rgb(212, 248, 255);
     background-image: url('/img/orig.jpg');
@@ -464,8 +474,8 @@ body {
     bottom: 0;
     left: 0;
     width: 100%;
-    border-bottom-left-radius: 1.2rem;
-    border-bottom-right-radius: 1.2rem;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
     height: 2.6rem;
     display: flex;
     justify-content: center;
@@ -517,19 +527,20 @@ body {
     height: 4.2rem;
     width: 4.2rem;
     padding: .5rem;
-    box-shadow: 0 .4rem .2rem 0 rgb(32, 30, 68);
 }
-
+.top_menu-button:hover {
+    transform: translateY(3px);
+}
 .time {
     font-size: 3rem;
     font-weight: bold;
 }
 
 .subsettings_return-start {
-    background: linear-gradient(rgb(112, 186, 107), rgb(80, 170, 83));
+    background: linear-gradient(#b0e56a, #97e234);
     height: 5.5rem;
     width: 5.5rem;
-    box-shadow: 0 .6rem .3rem 0 rgb(59, 146, 59);
+    box-shadow: 0 .6rem .3rem 0 #6eb115;
 }
 
 .select_back {
@@ -544,6 +555,7 @@ body {
 .photo_button {
     position: fixed;
     font-size: 2rem;
+    font-weight: bold;
     bottom: 2%;
     left: calc(50% - 4rem);
     padding: 1rem;
@@ -551,10 +563,44 @@ body {
     height: 8rem;
     border-radius: 4rem;
     box-shadow: inset 0 0 6px 2px, 2px 2px 2px 1px gray;
-    background-color: red;
-
+    background-color: #ff5618;
+    cursor: pointer;
 }
-
+.photo_button::before{
+    content: '';
+    width: 1rem;
+    height: 1.5rem;
+    background: radial-gradient(rgb(255, 255, 255), transparent);
+    position: absolute;
+    transform: rotate(-45deg);
+    top: 1rem;
+    right: 2rem;
+    filter: blur(.1rem);
+}
+.photo_button::after{
+    content: '';
+    width: 6rem;
+    height: 4rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-image: url('/img/arrowOnUpdate.svg');
+    position: absolute;
+    top: 0;
+    animation: scales 1.5s ease infinite;
+    left: 100%;
+}
+@keyframes scal {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(0.9);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
 @media (min-width: 400px) and (orientation: landscape) {
     html {
         font-size: 8px;
@@ -892,8 +938,7 @@ body {
     background-color: white;
     border-radius: 2rem;
     padding: 1rem;
-    box-shadow: 2px 2px 4px 2px gray;
-
+    box-shadow: 2px 2px 4px 2px rgb(181, 180, 180);
 }
 
 .messag_text {

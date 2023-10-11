@@ -27,7 +27,7 @@ function main() {
         playMusic(MUSIC);
         switch (initailValues.isPazzle) {
             case 'video': {
-                let promise = navigator.mediaDevices.getUserMedia({ video: true }); //video: {width:{exact:200}, height:{exact:200}}
+                let promise = navigator.mediaDevices.getUserMedia({ video: true });
                 promise.then(signal => {
                     VIDEO = document.createElement('video');
                     VIDEO.srcObject = signal;
@@ -109,14 +109,6 @@ function setDifficult() {
         }
     }
 }
-
-// function restart() {
-//     initialPieze();
-//     randomizePiezes();
-//     startedTime();
-//     END_TIME = null;
-// }
-
 
 function updateCanvas() {
     CONTEXT.clearRect(0, 0, CANVAS.width, CANVAS.height);

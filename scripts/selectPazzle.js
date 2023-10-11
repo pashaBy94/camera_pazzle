@@ -8,6 +8,7 @@ function getPrevPage() {
 }
 function selectSlochnostyOpen(ev) {
     initailValues.imagUrl = ev.target.dataset.url;
+    for(let i=0; i< checkItems.length; i++) checkItems[i].style.backgroundImage = `url('${initailValues.imagUrl}')`
     checkBack.classList.remove('open');
     viborSlosnosty.classList.add('open');
 }
