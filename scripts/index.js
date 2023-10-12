@@ -15,6 +15,7 @@ function setDefaultSettings() {
 }
 
 function main() {
+    console.log(SIZE);
     setDifficult();
     CANVAS = document.getElementById('myCanvas');
     CONTEXT = CANVAS.getContext('2d');
@@ -88,8 +89,8 @@ function pressPhoto() {
 function setDifficult() {
     switch (initailValues.difficult) {
         case 'easy': {
-            SIZE.rows = 2;
-            SIZE.columns = 2;
+            SIZE.rows = 3;
+            SIZE.columns = 3;
             break;
         };
         case 'medium': {

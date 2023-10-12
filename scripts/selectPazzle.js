@@ -25,7 +25,7 @@ function writeMenuSelectPazzle(numb = 0) {
         arr = arrPhoneImage;
     }
     CURRENT_PAGE_PAZZLE = numb;
-    if (CURRENT_PAGE_PAZZLE > Math.floor(arr.length / 6)) {
+    if (CURRENT_PAGE_PAZZLE >= Math.floor(arr.length / 6)) {
         CURRENT_PAGE_PAZZLE--;
     }
     let selectList = document.querySelector('.select_list');

@@ -16,6 +16,7 @@ const colors = document.querySelectorAll('.color');
 const selectListPrev = document.querySelector('.select_list-prev');
 const selectListNext = document.querySelector('.select_list-next');
 
+
 function initialGame() {
     showMessagRotate();
     addEventListenerInitial();
@@ -36,6 +37,59 @@ function showMessagRotate() {
 }
 
 function addEventListenerInitial() {
+    window.addEventListener('load', ()=>{
+        preload(
+            '/img/smallFone/anime1-small.png',
+            '/img/smallFone/anime2-small.png',
+            '/img/smallFone/anime3-small.png',
+            '/img/smallFone/anime4-small.png',
+            '/img/smallFone/smesh1-small.png',
+            '/img/smallFone/smesh2-small.png',
+            '/img/smallFone/smesh3-small.png',
+            '/img/smallFone/smesh4-small.png',
+            '/img/smallFone/peppa1-small.png',
+            '/img/smallFone/peppa2-small.png',
+            '/img/smallFone/peppa3-small.png',
+            '/img/smallFone/masha1-small.png',
+            '/img/smallFone/masha2-small.png',
+            '/img/smallFone/masha3-small.png',
+            '/img/smallFone/elza1-small.png',
+            '/img/smallFone/elza2-small.png',
+            '/img/smallFone/elza3-small.png',
+            '/img/smallFone/year-small.png',
+            '/img/smallFone/miki1-small.png',
+            '/img/smallFone/happe-small.png',
+            '/img/smallFone/leaves-small.png',
+            '/img/smallFone/miki-small.png',
+            '/img/smallFone/rabbit-small.png',
+            '/img/smallFone/sailor-small.png',
+            '/img/pictures/malchik-small.jpg', 
+            '/img/pictures/maugli-small.jpg', 
+            '/img/pictures/minony-small.jpg', 
+            '/img/pictures/panda-small.jpg', 
+            '/img/pictures/panteryi-small.jpg', 
+            '/img/pictures/rusalochka-small.jpg', 
+            '/img/pictures/zveropolis-small.jpg',
+            '/img/pictures/img7-small.png',
+            '/img/pictures/img8-small.png',
+            '/img/pictures/img9-small.png',
+            '/img/pictures/img10-small.png',
+            '/img/pictures/img11-small.png',
+            '/img/pictures/img12-small.png',
+            '/img/pictures/img13-small.png',
+            '/img/pictures/img14-small.png',
+            '/img/pictures/img15-small.png',
+            '/img/pictures/img16-small.png',
+            '/img/pictures/img17-small.png',
+            '/img/pictures/img18-small.png',
+            '/img/pictures/img19-small.png',
+            '/img/pictures/img20-small.png',
+            '/img/pictures/img21-small.png',
+            '/img/pictures/img22-small.png',
+            '/img/pictures/img23-small.png',
+            '/img/pictures/img24-small.png',
+        )
+    })
     window.addEventListener('resize', showMessagRotate, false);
     settingTohome.addEventListener('click', goToHome);
     selectListNext.addEventListener('click', getNextPage);
