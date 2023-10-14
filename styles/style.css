@@ -961,7 +961,29 @@ body {
 .messag_rotate-img {
     width: 70%;
 }
+.buttonDownload{
+    position: fixed;
+    display: flex;
+    bottom: 4rem;
+    right: 4rem;
+    background-color: #1c8ebe;
+    border-radius: 2rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 1.5rem;
+    cursor: pointer;
+    animation: scales 1.5s ease infinite;
+    text-decoration: none;
+}
 
+.buttonDownload_text{
+    padding-right: 1.5rem;
+    border-right: .3rem solid white;
+}
+.buttonDownload_img{
+    margin-left: 1.5rem;
+    height: 3rem;
+}
 .open {
     display: flex;
 }

@@ -88,6 +88,7 @@ function addEventListenerInitial() {
             '/img/pictures/img22-small.png',
             '/img/pictures/img23-small.png',
             '/img/pictures/img24-small.png',
+            'img/downButton.svg'
         )
     })
     window.addEventListener('resize', showMessagRotate, false);

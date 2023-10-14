@@ -104,8 +104,8 @@ function setDifficult() {
             break;
         }
         case 'insane': {
-            SIZE.rows = 10;
-            SIZE.columns = 12;
+            SIZE.rows = 9;
+            SIZE.columns = 11;
             break;
         }
     }

@@ -23,6 +23,7 @@ let PAZZLE_AUDIO = new Audio('/sound/pazzle.mp3');
 let MUSIC = new Audio('../sound/music.mp3');
 MUSIC.loop = true;
 let UPDATE = new Image();
+let IMAG_DOWNLOAD = new Image();
 let arrPhoneImage = [
     { small: '/img/emptyImg.png', big: '/img/emptyImg.png' },
     { small: '/img/smallFone/tor-small.png', big: '/img/bigFone/tor-big.png' },
