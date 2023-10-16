@@ -347,10 +347,10 @@ function addButtonToDownload() {
     a.append(span);
     let img = document.createElement('img');
     img.alt = 'download';
-    img.src = '/img/downButton.svg';
+    img.src = './img/downButton.svg';
     img.classList.add('buttonDownload_img');
     a.append(img);
-    document.body.append(a);
+        document.body.append(a);
 }
 function downloadImag() {
     convertCanvasToImag();

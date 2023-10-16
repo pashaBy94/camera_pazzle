@@ -22,7 +22,9 @@ let WINS_AUDIO = new Audio('./sound/wins.mp3');
 let PAZZLE_AUDIO = new Audio('./sound/pazzle.mp3');
 let MUSIC = new Audio('./sound/music.mp3');
 MUSIC.loop = true;
-let UPDATE = new Image('./img/update.svg');
+let UPDATE = new Image();
+UPDATE.src = './img/update.svg';
+let DOWN = new Image('./img/downButton.svg');
 let IMAG_DOWNLOAD = new Image();
 let arrPhoneImage = [
     { small: './img/emptyImg.png', big: './img/emptyImg.png' },

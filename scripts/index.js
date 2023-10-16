@@ -15,7 +15,6 @@ function setDefaultSettings() {
 }
 
 function main() {
-    console.log(SIZE);
     setDifficult();
     CANVAS = document.getElementById('myCanvas');
     CONTEXT = CANVAS.getContext('2d');
