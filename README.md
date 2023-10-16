@@ -1,29 +1,29 @@
 # my_game
 <p align="center">
-      <img src="Project Logo Url" width="726">
+      <img src="https://github.com/pashaBy94/my_game/blob/master/img/icon.png" width="200">
 </p>
 
 <p align="center">
-   <img src="https://github.com/pashaBy94/my_game/blob/master/img/%D0%91%D0%B5%D0%B7%20%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8.png" alt="Unity Version">
-   <img src="" alt="Game Version">
-   <img src="" alt="License">
+   <img src="https://github.com/pashaBy94/my_game/blob/master/img/screen5mobile.png" alt="Game" width="500">
+   <img src="https://github.com/pashaBy94/my_game/blob/master/img/screen2mobile.png" alt="Game" width="500">
+   <img src="https://github.com/pashaBy94/my_game/blob/master/img/screen4mobile.png" alt="Game" width="500">
 </p>
 
 ## About
 
-About Text Here
+<p>Камера пазл - уникальная игра, не имеющая аналогов на платформе Яндекс Игры. Это живой пазл, дающий возможность игроку самому создавать (с помощью камеры) уникальный контекст пазла. Камера пазл интересна для всех категорий лиц. Все могут использовать свое воображение для создания контента. 
+Фичи в игре: 
+- использование камеры для создания пазла;
+- использование наложения тематических картинок на ваше изображение. 
+В игре существует 4 уровня сложности. Можно соревноваться с другими игроками по скорости собирания пазла.</p>
 
 ## Documentation
 
-Documentation Here
-
-## Distribute
-
-- [Service Name](Page Link)
-
+<p>Перед игрой, игрок должен разрешить доступ к своей камере. Игра начинается с выбора сценария. 
+Сценарии игры: пазл с использованием видео, пазл с использованием фото, пазл с использованием картинки. После выбора сценария, нужно выбрать картинку для игры, либо заставку которая накладывается на фото или видео игрока. После выбора заставки необходимо выбрать сложность игры. Сложность игры состоит из четырех уровней по количеству пазлов. Затем игрок переходит в игровой стол, где разбросаны пазлы. После того как игрок собрал весь пазл, его предлагается скачать на телефон или компьютер. В ходе игры также можно менять  цвет игрового поля, отключать музыку, звуки, время.</p>
 
 ## Developers
 
-- [Delevoper Name](GitHub Profile Link)
+- https://gist.github.com/pashaBy94
 
 ## License
