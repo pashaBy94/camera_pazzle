@@ -5,6 +5,7 @@
 
 <p align="center">
    <img src="https://github.com/pashaBy94/my_game/blob/master/img/screen5mobile.png" alt="Game" width="500">
+      <hr/>
    <img src="https://github.com/pashaBy94/my_game/blob/master/img/screen2mobile.png" alt="Game" width="500">
    <img src="https://github.com/pashaBy94/my_game/blob/master/img/screen4mobile.png" alt="Game" width="500">
    <img src="https://github.com/pashaBy94/my_game/blob/master/img/menuIMG.png" alt="Game" width="500">
