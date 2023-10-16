@@ -1,8 +1,8 @@
-# my_game
+# Камера пазл 
 <p align="center">
-      <img src="https://github.com/pashaBy94/my_game/blob/master/img/icon.png" width="200" borderRadius="33">
+      <img src="https://github.com/pashaBy94/my_game/blob/master/img/icon.png" width="200">
 </p>
-<h1>Камера пазл </h1>
+<h1>Интерфейс игры</h1>
 
 <p align="center">
             <img src="https://github.com/pashaBy94/my_game/blob/master/img/menuIMG.png" alt="Game" width="500">
