@@ -582,7 +582,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-image: url('./img/arrowOnUpdate.svg');
+    background-image: url('./../img/arrowOnUpdate.svg');
     position: absolute;
     top: 0;
     animation: scales 1.5s ease infinite;
