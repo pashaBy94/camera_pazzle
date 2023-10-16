@@ -1,12 +1,12 @@
 # my_game
 <p align="center">
-      <img src="https://github.com/pashaBy94/my_game/blob/master/img/icon.png" width="726">
+      <img src="https://github.com/pashaBy94/my_game/blob/master/img/icon.png" width="500">
 </p>
 
 <p align="center">
-   <img src="https://github.com/pashaBy94/my_game/blob/master/img/screen5mobile.png" alt="Game">
-   <img src="https://github.com/pashaBy94/my_game/blob/master/img/screen2mobile.png" alt="Game">
-   <img src="https://github.com/pashaBy94/my_game/blob/master/img/screen4mobile.png" alt="Game">
+   <img src="https://github.com/pashaBy94/my_game/blob/master/img/screen5mobile.png" alt="Game" width="500" style="border-radius: 20">
+   <img src="https://github.com/pashaBy94/my_game/blob/master/img/screen2mobile.png" alt="Game" width="500">
+   <img src="https://github.com/pashaBy94/my_game/blob/master/img/screen4mobile.png" alt="Game" width="500">
 </p>
 
 ## About
