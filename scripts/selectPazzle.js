@@ -34,6 +34,7 @@ function writeMenuSelectPazzle(numb = 0) {
     for (let i = 6 * CURRENT_PAGE_PAZZLE; i < arr.length && i < (6 * CURRENT_PAGE_PAZZLE + 6); i++) {
         let div = document.createElement('div');
         div.classList.add('select_item-back');
+        console.log(arr[i]);
         if (i % 3 === 0) {
             wrap = document.createElement('div');
             selectList.append(wrap);

@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PuzzleCam Game</title>
+  <!-- Yandex Games SDK -->
+<script src="https://yandex.ru/games/sdk/v2"></script>
+<script src="scripts/sdk.js"></script>
   <script src="scripts/downloadImag.js"></script>
   <link rel="stylesheet" href="styles/style.css">
   <style type="text/css">
@@ -264,74 +267,6 @@
   <script src="scripts/utils.js"></script>
   <script src="scripts/game.js"></script>
   <script src="scripts/index.js"></script>
-  <!-- <div id="preloader_malc">
-    <div>
-      <img src="img/icon2.png"  alt="Идет загрузка" class="img_loader"
-        srcset="img/icon2.png 600h " />
-      <p>Загрузка...</p>
-    </div>
-  </div>
-
-  <style type="text/css">
-    .img_loader {
-      height: 50%;
-      animation: scales 1.5s ease infinite;
-    }
-
-    @keyframes scales {
-      0% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(0.9);
-      }
-
-      100% {
-        transform: scale(1);
-      }
-    }
-
-    #preloader_malc {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 99;
-      font-size: 2rem;
-      font-weight: bold;
-      color: white;
-    }
-
-    #preloader_malc div {
-      background: #9C54E0;
-      border-radius: 8px;
-      color: #111;
-      position: fixed;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 999;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-
-    #preloader_malc div p {
-      color: white;
-    }
-  </style>
-
-  <script type="text/javascript">
-    window.onload = function () {
-      setTimeout(function () {
-        document.getElementById("preloader_malc").style.display = "none";
-      }, 10);
-    };
-  </script> -->
 </body>
 
 </html>

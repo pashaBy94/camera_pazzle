@@ -230,24 +230,6 @@ class Piece {
         context.restore();
         context.fill();
     }
-
-
-    // drawPaintLine(context) {
-
-    //     context.moveTo(this.x, this.y);
-    //     //top
-    //     context.lineTo(this.x + this.width * Math.abs(this.top), this.y - tabHeight * Math.sign(this.top));
-    //     context.lineTo(this.x + this.width, this.y);
-    //     //right
-    //     context.lineTo(this.x + this.width - tabHeight * Math.sign(this.right), this.y + this.height * Math.abs(this.right));
-    //     context.lineTo(this.x + this.width, this.y + this.height);
-    //     //bottom
-    //     context.lineTo(this.x + this.width * Math.abs(this.bottom), this.y + this.height + tabHeight * Math.sign(this.bottom));
-    //     context.lineTo(this.x, this.y + this.height);
-    //     // left
-    //     context.lineTo(this.x + tabHeight * Math.sign(this.left), this.y + this.height * Math.abs(this.left));
-    //     context.lineTo(this.x, this.y);
-    // }
     isClose() {
         if (this.distance({ x: this.x, y: this.y }) < CORRECT_DISTANCE) return true;
         return false;

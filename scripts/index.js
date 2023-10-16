@@ -19,7 +19,7 @@ function main() {
     setDifficult();
     CANVAS = document.getElementById('myCanvas');
     CONTEXT = CANVAS.getContext('2d');
-    UPDATE.src = '/img/update.svg';
+    UPDATE.src = '../img/update.svg';
     loader();
     choisiImag(initailValues.imagUrl);
     initailValues.imag.onload = () => {
