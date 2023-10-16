@@ -4,7 +4,7 @@
 </p>
 <h1>Интерфейс игры</h1>
 
-<p align="center">
+<p>
             <img src="https://github.com/pashaBy94/my_game/blob/master/img/menuIMG.png" alt="Game" width="500">
             <hr/>
             <img src="https://github.com/pashaBy94/my_game/blob/master/img/screen2mobile.png" alt="Game" width="500">
