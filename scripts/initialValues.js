@@ -25,7 +25,7 @@ MUSIC.loop = true;
 let UPDATE = new Image();
 let IMAG_DOWNLOAD = new Image();
 let arrPhoneImage = [
-    { small: '../img/emptyImg.png', big: './img/emptyImg.png' },
+    { small: './img/emptyImg.png', big: './img/emptyImg.png' },
     { small: './img/smallFone/tor-small.png', big: './img/bigFone/tor-big.png' },
     { small: './img/smallFone/hulk-small.png', big: './img/bigFone/hulk-big.png' },
     { small: './img/smallFone/pantera-small.png', big: './img/bigFone/pantera-big.png' },
