@@ -123,6 +123,7 @@ function updateCanvas() {
     for (let i = 0; i < PIEZES.length; i++) {
         PIEZES[i].draw(CONTEXT);
     }
+    if(UPDATE)
     CONTEXT.drawImage(UPDATE, CANVAS.width * 0.9, CANVAS.height - CANVAS.width * 0.14, CANVAS.width * 0.07, CANVAS.width * 0.07);
     if (process.isGame)
         requestAnimationFrame(updateCanvas);
