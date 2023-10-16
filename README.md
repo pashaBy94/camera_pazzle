@@ -1,6 +1,6 @@
 # my_game
 <p align="center">
-      <img src="Project Logo Url" width="726">
+      <img src="https://github.com/pashaBy94/my_game/blob/master/img/icon.png" width="726">
 </p>
 
 <p align="center">
